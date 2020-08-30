@@ -33,7 +33,5 @@ class HeaderComponent extends Component<Props> {
     }
 }
 
-const mapStateToProps: MapStateToPropsParam<Props, {}, State> = (store: State) => ({
-    settings: store.settings,
-})
+const mapStateToProps: MapStateToPropsParam<Props, {}, State> = ({ settings }) => ({ settings })
 export default connect<Props, {}, {}, State>(mapStateToProps)(HeaderComponent);

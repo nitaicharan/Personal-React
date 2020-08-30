@@ -47,8 +47,6 @@ class Form extends Component<IProps, SettingsState> {
     }
 }
 
-const mapStateToProps: MapStateToPropsParam<IProps, {}, State> = (state: State) => ({
-    settings: state.settings
-});
+const mapStateToProps: MapStateToPropsParam<IProps, {}, State> = ({ settings }) => ({ settings });
 
 export default connect<IProps, {}, {}, State>(mapStateToProps)(Form);

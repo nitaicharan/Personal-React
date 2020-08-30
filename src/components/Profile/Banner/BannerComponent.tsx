@@ -32,10 +32,6 @@ class Banner extends Component<IProps> {
 }
 
 
-const mapStateToProps: MapStateToPropsParam<IProps, {}, State> = (state: State) => ({
-    username: state.settings.username,
-    bio: state.settings.bio,
-    image: state.settings.image,
-})
+const mapStateToProps: MapStateToPropsParam<IProps, {}, State> = ({ settings }) => ({ ...settings })
 
 export default connect<IProps, {}, {}, State>(mapStateToProps)(Banner);

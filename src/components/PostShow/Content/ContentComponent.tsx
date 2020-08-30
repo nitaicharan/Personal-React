@@ -4,10 +4,9 @@ import { Post } from "../../../models/Post";
 import { PostShowState } from "../../../reducers/PostShowReducer";
 import { SettingsState } from "../../../reducers/SettingsReducer";
 import { State } from "../../../state";
+import CommentsComponent from "../Comments/CommentsComponent";
 
-interface IProps {
-    postShow: PostShowState;
-    settings: SettingsState;
+interface IProps extends PostShowState, SettingsState {
 }
 
 class ContentComponent extends Component<IProps> {
@@ -17,7 +16,7 @@ class ContentComponent extends Component<IProps> {
                 <div className="row article-content">
                     <div className="col-xs-12">
                         <div>
-                            <p>{this.props.postShow.article?.body}</p>
+                            <p>{this.props.article?.body}</p>
                         </div>
                         <ul className="tag-list">
                         </ul>
@@ -28,19 +27,19 @@ class ContentComponent extends Component<IProps> {
                 <div className="row">
                     <div className="col-xs-12 col-md-8 offset-md-2">
                         {
-                            this.props.settings.image &&
+                            this.props.image &&
                             /* TODO create a form component */
                             <form className="card comment-form">
                                 <div className="card-block">
                                     <textarea className="form-control" placeholder="Write a comment..." rows={3}></textarea>
                                 </div>
                                 <div className="card-footer">
-                                    <img src={this.props.settings?.image} className="comment-author-img" />
+                                    <img src={this.props.image} className="comment-author-img" />
                                     <button className="btn btn-sm btn-primary" type="submit">Post Comment</button>
                                 </div>
                             </form>
                         }
-                        {/* TODO create a comments component */}
+                        <CommentsComponent />
                     </div>
                 </div>
             </>
@@ -48,6 +47,9 @@ class ContentComponent extends Component<IProps> {
     }
 }
 
-const mapStateToProps: MapStateToPropsParam<IProps, {}, State> = (state) => ({ ...state.postShow, ...state });
+const mapStateToProps: MapStateToPropsParam<IProps, {}, State> = ({ postShow, settings }) => ({
+    ...postShow,
+    ...settings
+});
 
 export default connect(mapStateToProps)(ContentComponent);
