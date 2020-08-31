@@ -22,6 +22,7 @@ class FormComponent extends Component<Props, SignUpState> {
 
     render() {
         return (
+            // TODO use formik
             <form onSubmit={this.handleSubmit}>
                 <fieldset>
                     <fieldset className='form-group'>

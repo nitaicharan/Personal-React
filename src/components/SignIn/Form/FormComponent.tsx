@@ -22,6 +22,7 @@ class FormComponent extends Component<IProps, SignInState> {
 
     render() {
         return (
+            // TODO use formik
             <form onSubmit={this.handleSubmit}>
                 <fieldset className='form-group'>
                     <input onChange={this.handleChange} name="email" className='form-control form-control-lg' type='email' placeholder='Email' />

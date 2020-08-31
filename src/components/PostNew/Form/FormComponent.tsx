@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 class FormComponent extends Component {
     render() {
         return (
+            // TODO use formik
             <form>
                 <fieldset>
 

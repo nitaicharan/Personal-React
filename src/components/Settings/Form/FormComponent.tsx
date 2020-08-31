@@ -18,6 +18,7 @@ class Form extends Component<IProps, SettingsState> {
     render() {
         const { settings } = this.props;
         return (
+            // TODO use formik
             <form>
                 <fieldset>
                     <fieldset className='form-group'>

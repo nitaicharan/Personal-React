@@ -4,6 +4,7 @@ import { State } from '../../state';
 import { fetchPostThunk } from '../../thunk/PostShowThunks';
 import BannerComponent from './Banner/BannerComponent';
 import ContentComponent from './Content/ContentComponent';
+import FormComponent from './Form/FormComponent';
 
 interface IProps {
     fetchPost: (slug: string) => void;
