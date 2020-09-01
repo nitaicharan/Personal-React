@@ -1,21 +1,54 @@
-import { AnyAction, Dispatch } from "redux";
-import { fetchCommentsAction, fetchCommentsSuccessAction, postShowAction, postShowSuccessAction } from "../actions/PostShowActions";
+import { commentAction, fetchCommentsAction, fetchCommentsSuccessAction, postShowAction, postShowFailureAction, postShowSuccessAction } from "../actions/PostShowActions";
 import { PostShowState } from "../reducers/PostShowReducer";
-import { fetchPost } from "../services/PostShowService";
-import { State } from '../state';
-import { postShowFailureAction } from './../actions/PostShowActions';
-import { fetchComments } from './../services/PostShowService';
+import { State } from "../state";
+import { commentFailureAction, commentSuccessAction, fetchCommentsFailureAction } from './../actions/PostShowActions';
+import { commentPost, fetchComments, fetchPost } from './../services/PostShowService';
 
-export const fetchPostThunk = (payload: string) => {
-    return (dispatch: Dispatch<AnyAction>, getState: () => State) => {
+// TODO get slug from redux route
+export const fetchPostThunk = (slug: string) => {
+    return (dispatch: any) => {
         dispatch(postShowAction());
-        dispatch(fetchCommentsAction());
 
-        fetchPost(payload)
-            .then(({ data }) => dispatch(postShowSuccessAction(data as PostShowState)))
+        fetchPost(slug)
+            .then(({ data }) => dispatch(postShowSuccessAction({ ...data } as PostShowState)))
+            .then(() => dispatch(fetchCommentsThunk()))
             .catch(() => dispatch(postShowFailureAction()));
+    }
+}
 
-        fetchComments(payload)
-            .then(({ data }) => dispatch(fetchCommentsSuccessAction(data as PostShowState)));
+// TODO get slug from redux route
+export const fetchCommentsThunk = () => {
+    return (dispatch: any, getState: () => State) => {
+        dispatch(fetchCommentsAction());
+        const {
+            postShow: {
+                article: { slug }
+            }
+        } = getState();
+
+        fetchComments(slug)
+            .then(({ data }) => dispatch(fetchCommentsSuccessAction(data as PostShowState)))
+            // TODO display error message
+            .catch(() => dispatch(fetchCommentsFailureAction()));
+    }
+}
+
+// TODO get slug from redux route
+// TODO get body from redux postShow-comment-body
+export const commentPostThunk = (body: string) => {
+    return (dispatch: any, getState: () => State) => {
+        dispatch(commentAction());
+        const {
+            settings: { token },
+            postShow: {
+                article: { slug }
+            }
+        } = getState();
+
+        commentPost({ slug, body, token })
+            .then(() => dispatch(commentSuccessAction()))
+            .then(() => dispatch(fetchCommentsThunk()))
+            // TODO display error message
+            .catch(() => dispatch(commentFailureAction()));
     }
 }

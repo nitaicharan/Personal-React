@@ -7,7 +7,7 @@ export const fetchPostsThunk = () => {
         dispatch(postsPreviewAction());
 
         fetchPosts()
-            .then(res => dispatch(postsPreviewSuccessAction(res.data)))
+            .then(({ data }) => dispatch(postsPreviewSuccessAction({ ...data })))
             .catch(e => dispatch(postsPreviewFailureAction()));
     };
 };

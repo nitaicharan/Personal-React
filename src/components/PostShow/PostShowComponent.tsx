@@ -4,7 +4,6 @@ import { State } from '../../state';
 import { fetchPostThunk } from '../../thunk/PostShowThunks';
 import BannerComponent from './Banner/BannerComponent';
 import ContentComponent from './Content/ContentComponent';
-import FormComponent from './Form/FormComponent';
 
 interface IProps {
     fetchPost: (slug: string) => void;
@@ -19,6 +18,7 @@ interface RouteParams {
 }
 
 export class PostShowComponent extends Component<IProps & RouteParams> {
+
     componentDidMount() {
         const { slug } = this.props.match.params;
         const { fetchPost } = this.props

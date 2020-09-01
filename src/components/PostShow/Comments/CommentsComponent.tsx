@@ -12,7 +12,7 @@ class CommentsComponent extends Component<IProps> {
     render() {
         return (
             <>
-                {this.props.comments?.map(i => <CommentComponent {...i} />)}
+                {this.props.comments?.map(i => <CommentComponent {...i} key={i.id} />)}
             </>
         );
     }

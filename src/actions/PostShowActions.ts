@@ -1,3 +1,4 @@
+import { CommentConstants } from './../constants/PostShowConstants';
 import { AnyAction } from "redux";
 import { FetchCommentsConstants, PostShowConstants } from "../constants/PostShowConstants";
 import { PostShowState } from "../reducers/PostShowReducer";
@@ -26,4 +27,16 @@ export const fetchCommentsSuccessAction = (payload: PostShowState): AnyAction =>
 
 export const fetchCommentsFailureAction = (): AnyAction => ({
     type: FetchCommentsConstants.FETCH_COMMENTS_FAILURE,
+});
+
+export const commentAction = (): AnyAction => ({
+    type: CommentConstants.COMMENT,
+});
+
+export const commentSuccessAction = (): AnyAction => ({
+    type: CommentConstants.COMMENT_SUCCESS,
+});
+
+export const commentFailureAction = (): AnyAction => ({
+    type: CommentConstants.COMMENT_FAILURE,
 });

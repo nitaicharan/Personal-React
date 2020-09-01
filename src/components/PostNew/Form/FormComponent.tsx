@@ -23,6 +23,7 @@ class FormComponent extends Component {
                         <input className='form-control' type='text' placeholder='Enter tags' />
                     </fieldset>
 
+                    {/* TODO add functionality to new post */}
                     <button className='btn btn-lg pull-xs-right btn-primary' type='button'>Publish Article</button>
                 </fieldset>
             </form>

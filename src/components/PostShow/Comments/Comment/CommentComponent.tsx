@@ -20,6 +20,9 @@ export class CommentComponent extends Component<IProps> {
                         &nbsp;{this.props.author?.username}
                     </Link>
                     <span className="date-posted">{this.props.createdAt}</span>
+
+                    {/* TODO delete comment on click */}
+                    <span className="mod-options"><i className="ion-trash-a"></i></span>
                 </div>
             </div>
         )
