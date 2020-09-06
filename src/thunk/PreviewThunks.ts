@@ -1,7 +1,10 @@
 import { AnyAction, Dispatch } from "redux";
 import { toggleFavoritePost } from "../services/PreviewService";
+import { State } from '../state';
 
 export const toggleFavoritePostThunk = (slug: string) => {
-    console.log(slug)
-    return (dispatch: Dispatch<AnyAction>) => toggleFavoritePost(slug)
+    return (dispatch: Dispatch<AnyAction>, getState: () => State) => {
+        const { settings } = getState();
+        toggleFavoritePost(slug, settings.token)
+    }
 };
