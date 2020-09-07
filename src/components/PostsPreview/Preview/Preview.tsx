@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
+import { connect, MapDispatchToPropsFunction } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { Post } from '../../../models/Post';
+import { toggleFavoritePostThunk } from '../../../thunk/PreviewThunks';
 
-export interface IProps extends Post {
+export interface IProps {
+    toggleFavoritePost: (slug: string) => void;
 }
 
-class Preview extends Component<IProps> {
-    toggleFavoriteClass = (favorited: boolean): string => favorited ? 'btn btn-sm btn-primary' : 'btn btn-sm btn-outline-primary';
+class Preview extends Component<IProps & Post> {
+    toggleFavoriteClass = (): string => this.props.favorited ? 'btn btn-sm btn-primary' : 'btn btn-sm btn-outline-primary';
 
     render() {
         return (
@@ -21,7 +24,7 @@ class Preview extends Component<IProps> {
                         <span className="date">{new Date(this.props.createdAt).toDateString()}</span>
                     </div>
                     <div className="pull-xs-right">
-                        <button className={this.toggleFavoriteClass(this.props.favorited)}><i className="ion-heart"></i> {this.props.favoritesCount}</button>
+                        <button onClick={() => this.props.toggleFavoritePost(this.props.slug)} className={this.toggleFavoriteClass()}><i className="ion-heart"></i> {this.props.favoritesCount}</button>
                     </div>
                 </div>
 
@@ -36,4 +39,7 @@ class Preview extends Component<IProps> {
     }
 }
 
-export default Preview;
+const mapDispatchToProps: MapDispatchToPropsFunction<IProps, {}> = (dispatch: any) => ({
+    toggleFavoritePost: (slung: string) => dispatch(toggleFavoritePostThunk(slung)),
+});
+export default connect<{}, IProps, {}>(null, mapDispatchToProps)(Preview);

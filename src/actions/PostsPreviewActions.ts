@@ -1,6 +1,6 @@
 import { AnyAction } from "redux";
 import { PostsPreviewConstants } from "../constants/PostsPreviewConstants";
-import { PostsPreviewState } from "../reducers/PostsPreview";
+import { PostsPreviewState } from "../reducers/PostsPreviewReducer";
 
 export const postsPreviewAction = (): AnyAction => ({
     type: PostsPreviewConstants.POSTSPREVIEW,

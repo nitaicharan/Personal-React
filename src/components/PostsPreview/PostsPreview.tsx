@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect, MapDispatchToPropsFunction, MapStateToPropsParam } from 'react-redux';
-import { PostsPreviewState } from '../../reducers/PostsPreview';
+import { PostsPreviewState } from '../../reducers/PostsPreviewReducer';
 import { State } from '../../state';
 import { fetchPostsThunk } from '../../thunk/PostsPreviewThunks';
 import Preview from './Preview/Preview';
@@ -12,7 +12,7 @@ interface IProps {
 class PostsPreview extends Component<IProps & PostsPreviewState> {
     componentDidMount = () => this.props.fetchPostsThunk()
 
-    render = () => (this.props.articles.map(i => <Preview {...i} />));
+    render = () => (this.props.articles.map(i => <Preview key={i.slug} {...i} />));
 }
 
 const mapStateToProps: MapStateToPropsParam<PostsPreviewState, {}, State> = ({ postsPreview }) => ({ ...postsPreview });
