@@ -1,18 +1,13 @@
 import React, { ChangeEvent, Component, SyntheticEvent } from 'react';
 import { connect } from 'react-redux';
-import { loginAction } from '../../../../../../redux/actions/Auth/SingInActions';
-import { login } from '../../../../../../services/Auth/AuthService';
+import { signInAction } from '../../../../../../redux/actions/Auth/SignInActions';
+import { SignInState } from '../../../../../../redux/reducers/Auth/SignInReducer';
+import { signIn } from '../../../../../../services/Auth/SignInService';
 
-type IFormProps = {
-    loginAction: (email: string, password: string) => void;
+type Props = {
+    signInAction: (payload: SignInState) => void;
 }
-
-type IFormState = {
-    email: string;
-    password: string;
-}
-
-class Form extends Component<IFormProps, IFormState> {
+class Form extends Component<Props, SignInState> {
 
     handleChange(event: ChangeEvent<HTMLInputElement>) {
         this.setState({
@@ -22,11 +17,9 @@ class Form extends Component<IFormProps, IFormState> {
     }
 
     handleSubmit = (event: SyntheticEvent) => {
-        const { loginAction } = this.props;
-        const { email, password } = this.state;
-
-        loginAction(email, password);
-        login({ email, password }).then(console.log);
+        const { signInAction } = this.props;
+        signInAction(this.state);
+        signIn(this.state).then(console.log);
         event.preventDefault();
     };
 
@@ -34,11 +27,11 @@ class Form extends Component<IFormProps, IFormState> {
         return (
             <form onSubmit={this.handleSubmit}>
                 <fieldset className='form-group'>
-                    <input onChange={e => this.handleChange(e)} name="email" className='form-control form-control-lg' type='email' autoComplete='username' placeholder='Email' />
+                    <input onChange={e => this.handleChange(e)} name="email" className='form-control form-control-lg' type='email' placeholder='Email' />
                 </fieldset>
 
                 <fieldset className='form-group'>
-                    <input onChange={e => this.handleChange(e)} name="password" className='form-control form-control-lg' type='password' autoComplete='current-password' placeholder='Password' />
+                    <input onChange={e => this.handleChange(e)} name="password" className='form-control form-control-lg' type='password' placeholder='Password' />
                 </fieldset>
 
                 <button className='btn btn-lg btn-primary pull-xs-right' type="submit">Sign in</button>
@@ -48,7 +41,7 @@ class Form extends Component<IFormProps, IFormState> {
 }
 
 const mapDispatchToProps = (dispatch: any) => ({
-    loginAction: (email: string, password: string) => dispatch(loginAction(email, password))
+    signInAction: (payload: SignInState) => dispatch(signInAction(payload))
 });
 
 export default connect(null, mapDispatchToProps)(Form);

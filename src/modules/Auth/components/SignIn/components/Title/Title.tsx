@@ -6,7 +6,7 @@ export class Title extends Component {
         return (
             <>
                 <h1 className='text-xs-center'>Sign In</h1>
-                <p className="text-xs-center"><NavLink to="/register">Need an account?</NavLink></p>
+                <p className="text-xs-center"><NavLink to="/signup">Need an account?</NavLink></p>
             </>
         )
 

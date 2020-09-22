@@ -1,29 +1,26 @@
-import { LoginActionType } from "../../actions/Auth/SingInActions";
-import { SingInConstants } from "../../constants/Auth";
+import { AnyAction } from "redux";
+import { SignInConstants } from "../../constants/Auth/SignInConstants";
 
-type LoginState = {
+export type SignInState = {
     email: string;
     password: string;
-    loading: boolean;
+    [key: string]: any;
 }
 
-const initState: LoginState = {
+const initState: SignInState = {
     email: '',
     password: '',
     loading: false,
 }
 
-export default function reducer(state = initState, action: LoginActionType): LoginState {
-
+export default function reducer(state = initState, action: AnyAction): SignInState {
     switch (action.type) {
-        case SingInConstants.LOGIN:
+        case SignInConstants.SIGN_IN:
             return { ...state, ...action.payload, loading: true };
 
-        case SingInConstants.LOGIN_SUCCESS:
-            return { ...state, loading: false };;
-
-        case SingInConstants.LOGIN_FAILURE:
-            return { ...state, loading: false };;
+        case SignInConstants.SIGN_IN_SUCCESS:
+        case SignInConstants.SIGN_IN_FAILURE:
+            return { ...state, loading: false };
 
         default:
             return state;

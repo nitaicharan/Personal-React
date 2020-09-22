@@ -10,8 +10,8 @@ export class Header extends Component {
 
                     <ul className="nav navbar-nav pull-xs-right">
                         <li className="nav-item"><NavLink exact className="nav-link" to="/">Home</NavLink></li>
-                        <li className="nav-item"><NavLink className="nav-link" to="/login">Sign in</NavLink></li>
-                        <li className="nav-item"><NavLink className="nav-link" to="/register">Sign up</NavLink></li>
+                        <li className="nav-item"><NavLink className="nav-link" to="/signin">Sign in</NavLink></li>
+                        <li className="nav-item"><NavLink className="nav-link" to="/signup">Sign up</NavLink></li>
                     </ul>
                 </nav>
             </header>

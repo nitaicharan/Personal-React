@@ -12,8 +12,8 @@ export class Auth extends Component {
                         <div className='col-md-6 offset-md-3 col-xs-12'>
                             <Router>
                                 <Switch>
-                                    <Route path="/login" component={SignIn} />
-                                    <Route path="/register" component={SignUp} />
+                                    <Route path="/signin" component={SignIn} />
+                                    <Route path="/signup" component={SignUp} />
                                 </Switch>
                             </Router>
                         </div>
