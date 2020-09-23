@@ -4,11 +4,15 @@ import { NavLink } from 'react-router-dom';
 import { SettingsState } from '../../reducers/SettingsReducer';
 import { State } from '../../store';
 
-type TProps = {
+interface Props {
     settings: SettingsState
 }
 
-export class Header extends Component<TProps> {
+class Header extends Component<Props> {
+    image(image: string) {
+        return image || 'https://static.productionready.io/images/smiley-cyrus.jpg';
+    }
+
     render() {
         return (
             <header className="navbar navbar-light">
@@ -19,6 +23,7 @@ export class Header extends Component<TProps> {
                         <li className="nav-item"><NavLink exact className="nav-link" to="/">Home</NavLink></li>
                         {this.props.settings?.id && <li className="nav-item"><NavLink className="nav-link ion-compose" to="/new">&nbsp;New Post</NavLink></li>}
                         {this.props.settings?.id && <li className="nav-item"><NavLink className="nav-link ion-gear-a" to="/settings">&nbsp;Settings</NavLink></li>}
+                        {this.props.settings?.id && <li className="nav-item"><NavLink className="nav-link" to="/profile"><img src={this.image(this.props.settings.image)} className="user-pic" alt="profile" /></NavLink></li>}
                         {!this.props.settings?.id && <li className="nav-item"><NavLink className="nav-link" to="/signin">Sign In</NavLink></li>}
                         {!this.props.settings?.id && <li className="nav-item"><NavLink className="nav-link" to="/signup">Sign Up</NavLink></li>}
                     </ul>
@@ -28,7 +33,7 @@ export class Header extends Component<TProps> {
     }
 }
 
-const mapStateToProps: MapStateToPropsParam<TProps, {}, State> = (store: State) => ({
+const mapStateToProps: MapStateToPropsParam<Props, {}, State> = (store: State) => ({
     settings: store.settings,
 })
-export default connect<TProps, {}, {}, State>(mapStateToProps)(Header);
+export default connect<Props, {}, {}, State>(mapStateToProps)(Header);

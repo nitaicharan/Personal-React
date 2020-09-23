@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { NavLink } from 'react-router-dom'
 
-export class Title extends Component {
+class Title extends Component {
     render() {
         return (
             <>

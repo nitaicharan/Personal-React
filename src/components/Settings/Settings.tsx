@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Form from './Form/Form'
 import Title from './Title/Title'
 
-export class Settings extends Component {
+class Settings extends Component {
     render() {
         return (
             <>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export class Banner extends Component {
+class Banner extends Component {
     render() {
         return (
             <section className="banner">
