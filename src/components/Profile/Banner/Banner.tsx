@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect, MapStateToPropsParam } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { State } from '../../../store';
+import { State } from '../../../state';
 
 interface IProps {
     username: string;

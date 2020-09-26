@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect, MapDispatchToPropsFunction, MapStateToPropsParam } from 'react-redux';
 import { PostsPreviewState } from '../../reducers/PostsPreview';
-import { State } from '../../store';
+import { State } from '../../state';
 import { fetchPostsThunk } from '../../thunk/PostsPreviewThunks';
 import Preview from './Preview/Preview';
 

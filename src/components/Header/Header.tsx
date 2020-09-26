@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect, MapStateToPropsParam } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { SettingsState } from '../../reducers/SettingsReducer';
-import { State } from '../../store';
+import { State } from '../../state';
 
 interface Props {
     settings: SettingsState

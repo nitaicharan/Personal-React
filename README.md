@@ -28,7 +28,7 @@ This project was part of my personal study about the JavaScript library for buil
 ...
 // Add this property in file package.json:
 {
-  "homepage": "http://<username>.github.io/<repo-name>"
+  "homepage": "http://nitaicharan.github.io/Personal-React",
 }
 ...
 ```
