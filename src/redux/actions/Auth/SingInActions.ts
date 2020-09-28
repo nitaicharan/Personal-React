@@ -7,13 +7,13 @@ type LoginType = {
 
 export type LoginActionType = {
     type: string;
-    data: LoginType;
+    payload: LoginType;
 }
 
 export const loginAction = (email: string, password: string): LoginActionType => {
     return {
         type: SingInConstants.LOGIN,
-        data: {
+        payload: {
             email,
             password
         }
