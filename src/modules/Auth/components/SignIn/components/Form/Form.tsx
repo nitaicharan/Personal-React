@@ -1,9 +1,10 @@
 import React, { ChangeEvent, Component, SyntheticEvent } from 'react';
 import { connect } from 'react-redux';
 import { loginAction } from '../../../../../../redux/actions/Auth/SingInActions';
+import { login } from '../../../../../../services/Auth/AuthService';
 
 type IFormProps = {
-    login: (email: string, password: string) => void;
+    loginAction: (email: string, password: string) => void;
 }
 
 type IFormState = {
@@ -21,10 +22,11 @@ class Form extends Component<IFormProps, IFormState> {
     }
 
     handleSubmit = (event: SyntheticEvent) => {
-        const { login } = this.props;
+        const { loginAction } = this.props;
         const { email, password } = this.state;
 
-        login(email, password);
+        loginAction(email, password);
+        login({ email, password }).then(console.log);
         event.preventDefault();
     };
 
@@ -46,7 +48,7 @@ class Form extends Component<IFormProps, IFormState> {
 }
 
 const mapDispatchToProps = (dispatch: any) => ({
-    login: (email: string, password: string) => dispatch(loginAction(email, password))
+    loginAction: (email: string, password: string) => dispatch(loginAction(email, password))
 });
 
 export default connect(null, mapDispatchToProps)(Form);

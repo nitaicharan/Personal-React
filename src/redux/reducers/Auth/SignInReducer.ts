@@ -17,7 +17,6 @@ export default function reducer(state = initState, action: LoginActionType): Log
 
     switch (action.type) {
         case SingInConstants.LOGIN:
-            // console.log(action);
             return { ...state, ...action.payload, loading: true };
 
         case SingInConstants.LOGIN_SUCCESS:
