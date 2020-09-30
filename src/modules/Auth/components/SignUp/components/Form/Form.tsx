@@ -2,7 +2,7 @@ import React, { ChangeEvent, Component, SyntheticEvent } from 'react';
 import { connect } from 'react-redux';
 import { signUpAction } from '../../../../../../redux/actions/Auth/SignUpActions';
 import { SignUpState } from '../../../../../../redux/reducers/Auth/SignUpReducer';
-import { signIn } from '../../../../../../services/Auth/SignInService';
+import { signUp } from '../../../../../../services/Auth/SignUpService';
 
 type Props = {
     signUpAction: (payload: SignUpState) => void;
@@ -19,7 +19,7 @@ class Form extends Component<Props, SignUpState> {
     handleSubmit = (event: SyntheticEvent) => {
         const { signUpAction } = this.props;
         signUpAction(this.state);
-        signIn(this.state).then(console.log);
+        signUp(this.state).then(console.log);
         event.preventDefault();
     };
 
