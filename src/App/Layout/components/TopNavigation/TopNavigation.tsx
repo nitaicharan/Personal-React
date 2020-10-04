@@ -8,7 +8,8 @@ export class TopNavigation extends Component {
         return (
             <Router>
                 <Route strict path="/" component={Header} />
-                <Route strict path="/register" component={Auth} />
+                <Route path="/register" component={Auth} />
+                <Route path="/login" component={Auth} />
                 <Route exact path="/" component={Home} />
             </Router>
         )
