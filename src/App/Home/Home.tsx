@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
+import Banner from './components/Banner/Banner'
 
 export class Home extends Component {
     render() {
         return (
-            <div>
-                <h1>Hello Real World</h1>
-            </div>
+            <main className="home-page">
+                <Banner />
+            </main>
         )
     }
 }

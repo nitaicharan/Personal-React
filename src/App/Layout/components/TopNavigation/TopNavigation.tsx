@@ -1,11 +1,13 @@
-import React, { Component } from 'react'
-import Header from '../Header/Header'
+import React, { Component } from 'react';
+import Home from '../../../Home/Home';
+import Header from '../Header/Header';
 export class TopNavigation extends Component {
     render() {
         return (
-            <main>
+            <div>
                 <Header />
-            </main>
+                <Home />
+            </div>
         )
     }
 }
