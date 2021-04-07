@@ -1,12 +1,12 @@
 <!-- PROJECT SHIELDS -->
 ![React][react-shield]
 
-<p align="center">:bangbang: Project available to access at: https://nitaicharan.github.io/Udemy-RRTFFS1 :bangbang:</p>
+<p align="center">:bangbang: Project available to access at: https://nitaicharan.github.io/React-study :bangbang:</p>
 
-<!--[![](Udemy-RRTFFS1.png)](https://nitaicharan.github.io/Udemy-RRTFFS1/)-->
-<a href="https://nitaicharan.github.io/Udemy-RRTFFS1">
+<!--[![](PREVIEW.svg)](https://nitaicharan.github.io/React-study/)-->
+<a href="https://nitaicharan.github.io/React-study">
   <p align="center">
-    <img style="height: 100px" src="PREVIEW.png">
+    <img style="height: 100px" src="PREVIEW.svg">
   </p>
 </a>
 
@@ -34,7 +34,7 @@ This project was part of my personal study about the JavaScript library for buil
 ```
 
 ```
-npm run build
+yarn build
 
 git add -A
 git commit -m <tittle> <message>
