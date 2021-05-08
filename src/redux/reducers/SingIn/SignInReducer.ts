@@ -3,12 +3,15 @@ type ISignInReducer = {
     callback: () => void;
 }
 
-export default function reducer(state = {}, action: ISignInReducer) {
+const initState = {
+    email: 'personalreact@gmail.com',
+    password: 'personalreact',
+}
+
+export default function reducer(state = initState, action: ISignInReducer) {
     switch (action.type) {
         case '':
-
             break;
-
         default:
             break;
     }

@@ -1,28 +1,26 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
-type State = {
-    email: string,
-    password: string,
-}
-class Form extends React.Component<{}, State> {
+class Form extends React.Component<{ form: any }> {
     render() {
-        const { email, password } = this.state;
+        const { email, password } = this.props.form;
 
         return (
             <form>
                 <fieldset className='form-group'>
-                    <input value={email} onChange={event => this.setState({ ...this.state, email: event.target.value })} className='form-control form-control-lg' type='email' autoComplete='username' placeholder='Email' />
+                    <input value={email} className='form-control form-control-lg' type='email' autoComplete='username' placeholder='Email' />
                 </fieldset>
 
                 <fieldset className='form-group'>
-                    <input value={password} onChange={event => this.setState({ ...this.state, password: event.target.value })} className='form-control form-control-lg' type='password' autoComplete='current-password' placeholder='Password' />
+                    <input value={password} className='form-control form-control-lg' type='password' autoComplete='current-password' placeholder='Password' />
                 </fieldset>
 
                 <button className='btn btn-lg btn-primary pull-xs-right' type='submit'>Sign in</button>
             </form >
         )
-    }
-
+    };
 }
 
-export default Form;
+const mapStateToProps = (state: any) => ({ form: state.SingUp });
+const mapDispatchToProps = null;
+export default connect(mapStateToProps)(Form);
