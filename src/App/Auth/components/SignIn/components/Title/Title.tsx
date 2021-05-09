@@ -4,8 +4,8 @@ export class Title extends Component {
     render() {
         return (
             <>
-                <h1 className='text-xs-center'>Sign Up</h1>
-                <p className="text-xs-center"><a href="#">Have an account?</a></p>
+                <h1 className='text-xs-center'>Sign In</h1>
+                <p className="text-xs-center"><a href="#">Need an account?</a></p>
             </>
         )
 
