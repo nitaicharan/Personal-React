@@ -1,8 +1,8 @@
 {
-    "name": "reactstudy",
+    "name": "personalreact",
     "version": "0.1.0",
     "private": true,
-    "homepage": "http://nitaicharan.github.io/React-study",
+    "homepage": "http://nitaicharan.github.io/Personal-React",
     "dependencies": {
         "@testing-library/jest-dom": "^5.11.4",
         "@testing-library/react": "^11.1.0",

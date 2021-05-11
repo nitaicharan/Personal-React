@@ -1,10 +1,10 @@
 <!-- PROJECT SHIELDS -->
 ![React][react-shield]
 
-<p align="center">:bangbang: Project available to access at: https://nitaicharan.github.io/React-study :bangbang:</p>
+<p align="center">:bangbang: Project available to access at: https://nitaicharan.github.io/Personal-React :bangbang:</p>
 
-<!--[![](PREVIEW.svg)](https://nitaicharan.github.io/React-study/)-->
-<a href="https://nitaicharan.github.io/React-study">
+<!--[![](PREVIEW.svg)](https://nitaicharan.github.io/Personal-React/)-->
+<a href="https://nitaicharan.github.io/Personal-React">
   <p align="center">
     <img style="height: 100px" src="PREVIEW.svg">
   </p>
@@ -38,9 +38,9 @@ yarn build
 
 git add -A
 git commit -m <tittle> <message>
-git push origin <branch>
-git subtree push --prefix build origin gh-pages
-git push origin `git subtree split --prefix build <branch>`:gh-pages --force
+git push <remote> <branch>
+git subtree push --prefix build <remote> gh-pages
+git push <remote> `git subtree split --prefix build <branch>`:gh-pages --force
 ```
 
 <!-- MARKDOWN LINKS & IMAGES -->
