@@ -1,1 +1,1 @@
-export { default as SingUp } from './SingIn/SignInReducer';
+export { default as SingUp } from './Auth/SignInReducer';
