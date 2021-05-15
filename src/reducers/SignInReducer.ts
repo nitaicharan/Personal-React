@@ -1,4 +1,4 @@
-import { AnyAction } from "redux";
+import { AnyAction, Reducer } from "redux";
 import { SignInConstants } from "../constants/SignInConstants";
 
 export type SignInState = {
@@ -7,13 +7,7 @@ export type SignInState = {
     [key: string]: any;
 }
 
-const initState: SignInState = {
-    email: '',
-    password: '',
-    loading: false,
-}
-
-export default function reducer(state = initState, action: AnyAction): SignInState {
+const reducer: Reducer<SignInState, AnyAction> = (state = {} as SignInState, action: AnyAction): SignInState => {
     switch (action.type) {
         case SignInConstants.SIGN_IN:
             return { ...state, ...action.payload, loading: true };
@@ -26,3 +20,5 @@ export default function reducer(state = initState, action: AnyAction): SignInSta
             return state;
     }
 }
+
+export default reducer;

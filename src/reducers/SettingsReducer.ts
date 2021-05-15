@@ -1,4 +1,4 @@
-import { AnyAction } from "redux";
+import { AnyAction, Reducer } from "redux";
 import { SettingsConstants } from "../constants/SettingsConstants";
 
 export type SettingsState = {
@@ -14,15 +14,17 @@ export type SettingsState = {
     password: string;
 }
 
-export default function SettingsReducer(store = {} as SettingsState, action: AnyAction): SettingsState {
+const reducer: Reducer<SettingsState, AnyAction> = (state = {} as SettingsState, action: AnyAction): SettingsState => {
     switch (action.type) {
         case SettingsConstants.SETTINGS:
-            return { ...store, ...action.payload, loading: true };
+            return { ...state, ...action.payload, loading: true };
 
         case SettingsConstants.SETTINGS_SUCCESS:
         case SettingsConstants.SETTINGS_FAILURE:
-            return { ...store, loading: false };
+            return { ...state, loading: false };
         default:
-            return store;
+            return state;
     }
 };
+
+export default reducer;

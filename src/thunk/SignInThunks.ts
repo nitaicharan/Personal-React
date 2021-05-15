@@ -1,11 +1,11 @@
-import { Dispatch } from "redux";
+import { AnyAction, Dispatch } from "redux";
 import { settingsAction, settingsSuccessAction } from "../actions/SettingsActions";
 import { signInAction, signInSuccessAction } from "../actions/SignInActions";
 import { SignInState } from "../reducers/SignInReducer";
 import { login } from "../services/SignInService";
 
 export const signInThunk = (payload: SignInState) => {
-    return (dispatch: Dispatch<any>) => {
+    return (dispatch: Dispatch<AnyAction>) => {
         dispatch(signInAction(payload));
 
         login(payload)

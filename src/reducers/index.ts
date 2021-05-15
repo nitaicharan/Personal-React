@@ -1,3 +1,3 @@
-export { default as SignInReducer } from "./SignInReducer";
-export { default as SignUpReducer } from "./SignUpReducer";
-export { default as SettingsReducer } from "./SettingsReducer"
+export { default as signIn } from "./SignInReducer";
+export { default as signUp } from "./SignUpReducer";
+export { default as settings } from "./SettingsReducer"

@@ -1,12 +1,13 @@
 import React, { ChangeEvent, Component } from 'react';
-import { connect } from 'react-redux';
+import { connect, MapStateToPropsParam } from 'react-redux';
 import { SettingsState } from '../../../../reducers/SettingsReducer';
+import { State } from '../../../../store';
 
-type IProps = {
+interface IProps {
     settings: SettingsState;
 }
 
-export class Form extends Component<IProps> {
+class Form extends Component<IProps, SettingsState> {
     handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         this.setState({
             ...this.state,
@@ -46,7 +47,8 @@ export class Form extends Component<IProps> {
     }
 }
 
-const mapStateToProps = (state: any) => ({
-    settings: state.SettingsReducer,
+const mapStateToProps: MapStateToPropsParam<IProps, {}, State> = (state: State) => ({
+    settings: state.settings
 });
-export default connect(mapStateToProps)(Form);
+
+export default connect<IProps, {}, {}, State>(mapStateToProps)(Form);

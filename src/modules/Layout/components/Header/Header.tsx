@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import { connect, MapStateToPropsParam } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { SettingsState } from '../../../../reducers/SettingsReducer';
+import { State } from '../../../../store';
 
-type IProps = {
+type TProps = {
     settings: SettingsState
 }
 
-export class Header extends Component<IProps> {
+export class Header extends Component<TProps> {
     render() {
         return (
             <header className="navbar navbar-light">
@@ -26,7 +27,7 @@ export class Header extends Component<IProps> {
     }
 }
 
-const mapStateToProps = (state: any) => ({
-    settings: state.SettingsReducer,
+const mapStateToProps: MapStateToPropsParam<TProps, {}, State> = (store: State) => ({
+    settings: store.settings,
 })
-export default connect(mapStateToProps)(Header);
+export default connect<TProps, {}, {}, State>(mapStateToProps)(Header);

@@ -1,11 +1,14 @@
 import { combineReducers, createStore, applyMiddleware } from "redux";
 import { composeWithDevTools } from 'redux-devtools-extension';
-import * as reducers from "./reducers";
+import * as allReducers from "./reducers";
 import thunk from 'redux-thunk';
 
+const reducers = combineReducers({ ...allReducers });
 export const store = createStore(
-    combineReducers({ ...reducers }),
+    reducers,
     composeWithDevTools(
         applyMiddleware(thunk),
     ),
 );
+
+export type State = ReturnType<typeof reducers>;

@@ -1,5 +1,5 @@
 import React, { ChangeEvent, Component, SyntheticEvent } from 'react';
-import { connect } from 'react-redux';
+import { connect, MapDispatchToPropsFunction } from 'react-redux';
 import { SignInState } from '../../../../reducers/SignInReducer';
 import { signInThunk } from '../../../../thunk/SignInThunks';
 
@@ -37,8 +37,8 @@ class Form extends Component<IProps, SignInState> {
     };
 }
 
-const mapDispatchToProps = (dispatch: any) => ({
+const mapDispatchToProps: MapDispatchToPropsFunction<IProps, {}> = (dispatch: any) => ({
     signInThunk: (payload: SignInState) => dispatch(signInThunk(payload)),
 });
 
-export default connect(null, mapDispatchToProps)(Form);
+export default connect<{}, IProps, {}>(null, mapDispatchToProps)(Form);
