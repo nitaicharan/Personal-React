@@ -1,7 +1,13 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
+import { SettingsState } from '../../../../reducers/SettingsReducer';
 
-export class Header extends Component {
+type IProps = {
+    settings: SettingsState
+}
+
+export class Header extends Component<IProps> {
     render() {
         return (
             <header className="navbar navbar-light">
@@ -10,13 +16,17 @@ export class Header extends Component {
 
                     <ul className="nav navbar-nav pull-xs-right">
                         <li className="nav-item"><NavLink exact className="nav-link" to="/">Home</NavLink></li>
-                        <li className="nav-item"><NavLink className="nav-link" to="/signin">Sign in</NavLink></li>
-                        <li className="nav-item"><NavLink className="nav-link" to="/signup">Sign up</NavLink></li>
+                        {this.props.settings?.id && <li className="nav-item"><NavLink className="nav-link ion-gear-a" to="/settings">&nbsp;Settings</NavLink></li>}
+                        {!this.props.settings?.id && <li className="nav-item"><NavLink className="nav-link" to="/signin">Sign In</NavLink></li>}
+                        {!this.props.settings?.id && <li className="nav-item"><NavLink className="nav-link" to="/signup">Sign Up</NavLink></li>}
                     </ul>
                 </nav>
             </header>
-        )
+        );
     }
 }
 
-export default Header;
+const mapStateToProps = (state: any) => ({
+    settings: state.SettingsReducer,
+})
+export default connect(mapStateToProps)(Header);

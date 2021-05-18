@@ -10,6 +10,7 @@ export class TopNavigation extends Component {
                 <Route strict path="/" component={Header} />
                 <Route path="/signup" component={Container} />
                 <Route path="/signin" component={Container} />
+                <Route path="/settings" component={Container} />
                 <Route exact path="/" component={Home} />
             </Router>
         )

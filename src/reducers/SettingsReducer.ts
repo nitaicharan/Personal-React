@@ -13,19 +13,7 @@ export type SettingsState = {
     loading: boolean
 }
 
-const initValue: SettingsState = {
-    bio: '',
-    createdAt: new Date(),
-    email: '',
-    id: 0,
-    image: '',
-    token: '',
-    updatedAt: new Date(),
-    username: '',
-    loading: false
-}
-
-export default function SettingsReducer(store = initValue, action: AnyAction): SettingsState {
+export default function SettingsReducer(store = {} as SettingsState, action: AnyAction): SettingsState {
     switch (action.type) {
         case SettingsConstants.SETTINGS:
             return { ...store, ...action.payload, loading: true };

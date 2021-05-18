@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import Settings from '../../components/Settings/Settings'
 import SignIn from '../../components/SignIn/SignIn'
 import SignUp from '../../components/SignUp/SignUp'
 
@@ -14,6 +15,7 @@ export class Container extends Component {
                                 <Switch>
                                     <Route path="/signin" component={SignIn} />
                                     <Route path="/signup" component={SignUp} />
+                                    <Route path="/settings" component={Settings} />
                                 </Switch>
                             </Router>
                         </div>
