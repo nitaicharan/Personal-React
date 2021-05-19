@@ -1,5 +1,6 @@
 import React, { ChangeEvent, Component, SyntheticEvent } from 'react';
 import { connect } from 'react-redux';
+import { Dispatch } from 'redux';
 import { signUpAction } from '../../../../../../redux/actions/Auth/SignUpActions';
 import { SignUpState } from '../../../../../../redux/reducers/Auth/SignUpReducer';
 import { signUp } from '../../../../../../services/Auth/SignUpService';
@@ -46,7 +47,7 @@ class Form extends Component<Props, SignUpState> {
     };
 }
 
-const mapDispatchToProps = (dispatch: any) => ({
+const mapDispatchToProps = (dispatch: Dispatch) => ({
     signUpAction: (payload: SignUpState) => dispatch(signUpAction(payload))
 });
 

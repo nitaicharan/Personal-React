@@ -1,15 +1,14 @@
 import React, { ChangeEvent, Component, SyntheticEvent } from 'react';
 import { connect } from 'react-redux';
-import { signInAction } from '../../../../../../redux/actions/Auth/SignInActions';
 import { SignInState } from '../../../../../../redux/reducers/Auth/SignInReducer';
-import { signIn } from '../../../../../../services/Auth/SignInService';
+import { signInThunk } from '../../../../../../redux/thunk';
 
 type Props = {
-    signInAction: (payload: SignInState) => void;
+    signInThunk: (payload: SignInState) => void;
 }
 class Form extends Component<Props, SignInState> {
 
-    handleChange(event: ChangeEvent<HTMLInputElement>) {
+    handleChange = (event: ChangeEvent<HTMLInputElement>) => {
         this.setState({
             ...this.state,
             [event.target.name]: event.target.value
@@ -17,9 +16,7 @@ class Form extends Component<Props, SignInState> {
     }
 
     handleSubmit = (event: SyntheticEvent) => {
-        const { signInAction } = this.props;
-        signInAction(this.state);
-        signIn(this.state).then(console.log);
+        this.props.signInThunk(this.state);
         event.preventDefault();
     };
 
@@ -27,11 +24,11 @@ class Form extends Component<Props, SignInState> {
         return (
             <form onSubmit={this.handleSubmit}>
                 <fieldset className='form-group'>
-                    <input onChange={e => this.handleChange(e)} name="email" className='form-control form-control-lg' type='email' placeholder='Email' />
+                    <input onChange={this.handleChange} name="email" className='form-control form-control-lg' type='email' placeholder='Email' />
                 </fieldset>
 
                 <fieldset className='form-group'>
-                    <input onChange={e => this.handleChange(e)} name="password" className='form-control form-control-lg' type='password' placeholder='Password' />
+                    <input onChange={this.handleChange} name="password" className='form-control form-control-lg' type='password' placeholder='Password' />
                 </fieldset>
 
                 <button className='btn btn-lg btn-primary pull-xs-right' type="submit">Sign in</button>
@@ -41,7 +38,7 @@ class Form extends Component<Props, SignInState> {
 }
 
 const mapDispatchToProps = (dispatch: any) => ({
-    signInAction: (payload: SignInState) => dispatch(signInAction(payload))
+    signInThunk: (payload: SignInState) => dispatch(signInThunk(payload)),
 });
 
 export default connect(null, mapDispatchToProps)(Form);
