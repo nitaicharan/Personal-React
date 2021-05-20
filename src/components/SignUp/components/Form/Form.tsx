@@ -1,9 +1,9 @@
 import React, { ChangeEvent, Component, SyntheticEvent } from 'react';
 import { connect } from 'react-redux';
 import { Dispatch } from 'redux';
-import { signUpAction } from '../../../../../../redux/actions/Auth/SignUpActions';
-import { SignUpState } from '../../../../../../redux/reducers/Auth/SignUpReducer';
-import { signUp } from '../../../../../../services/Auth/SignUpService';
+import { signUpAction } from '../../../../actions/SignUpActions';
+import { SignUpState } from '../../../../reducers/SignUpReducer';
+import { signUp } from '../../../../services/SignUpService';
 
 type Props = {
     signUpAction: (payload: SignUpState) => void;

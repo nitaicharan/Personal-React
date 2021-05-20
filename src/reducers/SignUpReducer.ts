@@ -1,5 +1,5 @@
 import { AnyAction } from "redux";
-import { SignUpConstants } from "../../constants/Auth/SignUpConstants";
+import { SignUpConstants } from "../constants/SignUpConstants";
 
 export type SignUpState = {
     username: string;

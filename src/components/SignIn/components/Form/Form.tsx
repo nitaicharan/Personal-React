@@ -1,7 +1,7 @@
 import React, { ChangeEvent, Component, SyntheticEvent } from 'react';
 import { connect } from 'react-redux';
-import { SignInState } from '../../../../../../redux/reducers/Auth/SignInReducer';
-import { signInThunk } from '../../../../../../redux/thunk';
+import { SignInState } from '../../../../reducers/SignInReducer';
+import { signInThunk } from '../../../../thunk/SignInThunks';
 
 type Props = {
     signInThunk: (payload: SignInState) => void;

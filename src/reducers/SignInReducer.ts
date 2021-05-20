@@ -1,5 +1,5 @@
 import { AnyAction } from "redux";
-import { SignInConstants } from "../../constants/Auth/SignInConstants";
+import { SignInConstants } from "../constants/SignInConstants";
 
 export type SignInState = {
     email: string;

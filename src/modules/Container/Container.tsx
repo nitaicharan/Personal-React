@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import SignIn from './components/SignIn/SignIn'
-import SignUp from './components/SignUp/SignUp'
+import SignIn from '../../components/SignIn/SignIn'
+import SignUp from '../../components/SignUp/SignUp'
 
-export class Auth extends Component {
+export class Container extends Component {
     render() {
         return (
             <main className='auth-page'>
@@ -24,4 +24,4 @@ export class Auth extends Component {
     }
 }
 
-export default Auth
+export default Container

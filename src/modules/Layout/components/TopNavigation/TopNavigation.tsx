@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import Auth from '../../../Auth/Auth';
+import Container from '../../../Container/Container';
 import Home from '../../../Home/Home';
 import Header from '../Header/Header';
 export class TopNavigation extends Component {
@@ -8,8 +8,8 @@ export class TopNavigation extends Component {
         return (
             <Router>
                 <Route strict path="/" component={Header} />
-                <Route path="/signup" component={Auth} />
-                <Route path="/signin" component={Auth} />
+                <Route path="/signup" component={Container} />
+                <Route path="/signin" component={Container} />
                 <Route exact path="/" component={Home} />
             </Router>
         )
