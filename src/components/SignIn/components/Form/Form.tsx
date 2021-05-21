@@ -3,10 +3,10 @@ import { connect } from 'react-redux';
 import { SignInState } from '../../../../reducers/SignInReducer';
 import { signInThunk } from '../../../../thunk/SignInThunks';
 
-type Props = {
+type IProps = {
     signInThunk: (payload: SignInState) => void;
 }
-class Form extends Component<Props, SignInState> {
+class Form extends Component<IProps, SignInState> {
 
     handleChange = (event: ChangeEvent<HTMLInputElement>) => {
         this.setState({

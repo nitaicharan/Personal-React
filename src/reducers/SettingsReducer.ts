@@ -10,7 +10,8 @@ export type SettingsState = {
     token: string;
     updatedAt: Date;
     username: string;
-    loading: boolean
+    loading: boolean;
+    password: string;
 }
 
 export default function SettingsReducer(store = {} as SettingsState, action: AnyAction): SettingsState {

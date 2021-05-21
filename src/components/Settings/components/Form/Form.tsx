@@ -1,29 +1,42 @@
-import React, { Component } from 'react'
+import React, { ChangeEvent, Component } from 'react';
+import { connect } from 'react-redux';
+import { SettingsState } from '../../../../reducers/SettingsReducer';
 
-export class Form extends Component {
+type IProps = {
+    settings: SettingsState;
+}
+
+export class Form extends Component<IProps> {
+    handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        this.setState({
+            ...this.state,
+            [e.target.name]: e.target.value,
+        })
+    }
+
     render() {
+        const { settings } = this.props;
         return (
             <form>
                 <fieldset>
-
                     <fieldset className='form-group'>
-                        <input className='form-control' type='text' placeholder='URL of profile picture' />
+                        <input onChange={this.handleChange} defaultValue={settings.image} className='form-control' type='text' placeholder='URL of profile picture' />
                     </fieldset>
 
                     <fieldset className='form-group'>
-                        <input className='form-control form-control-lg' type='text' placeholder='Username' />
+                        <input onChange={this.handleChange} defaultValue={settings.username} className='form-control form-control-lg' type='text' placeholder='Username' />
                     </fieldset>
 
                     <fieldset className='form-group'>
-                        <textarea className='form-control form-control-lg' placeholder='Short bio about you' rows={8} />
+                        <textarea onChange={this.handleChange} defaultValue={settings.bio} className='form-control form-control-lg' placeholder='Short bio about you' rows={8} />
                     </fieldset>
 
                     <fieldset className='form-group'>
-                        <input className='form-control form-control-lg' autoComplete='username' type='email' placeholder='Email' />
+                        <input onChange={this.handleChange} defaultValue={settings.email} className='form-control form-control-lg' autoComplete='username' type='email' placeholder='Email' />
                     </fieldset>
 
                     <fieldset className='form-group'>
-                        <input className='form-control form-control-lg' type='password' autoComplete='current-password' placeholder='New Password' />
+                        <input onChange={this.handleChange} defaultValue={settings.password} className='form-control form-control-lg' type='password' autoComplete='current-password' placeholder='New Password' />
                     </fieldset>
 
                     <button className='btn btn-lg btn-primary pull-xs-right' type='submit'>Update Settings</button>
@@ -33,4 +46,7 @@ export class Form extends Component {
     }
 }
 
-export default Form
+const mapStateToProps = (state: any) => ({
+    settings: state.SettingsReducer,
+});
+export default connect(mapStateToProps)(Form);
