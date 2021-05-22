@@ -1,12 +1,10 @@
 import React, { ChangeEvent, Component, SyntheticEvent } from 'react';
 import { connect } from 'react-redux';
-import { Dispatch } from 'redux';
-import { signUpAction } from '../../../../actions/SignUpActions';
 import { SignUpState } from '../../../../reducers/SignUpReducer';
-import { signUp } from '../../../../services/SignUpService';
+import { signUpThunk } from '../../../../thunk/SignUpThunks';
 
 type Props = {
-    signUpAction: (payload: SignUpState) => void;
+    signUpThunk: (payload: SignUpState) => void;
 }
 class Form extends Component<Props, SignUpState> {
 
@@ -18,9 +16,7 @@ class Form extends Component<Props, SignUpState> {
     }
 
     handleSubmit = (event: SyntheticEvent) => {
-        const { signUpAction } = this.props;
-        signUpAction(this.state);
-        signUp(this.state).then(console.log);
+        this.props.signUpThunk(this.state);
         event.preventDefault();
     };
 
@@ -47,8 +43,8 @@ class Form extends Component<Props, SignUpState> {
     };
 }
 
-const mapDispatchToProps = (dispatch: Dispatch) => ({
-    signUpAction: (payload: SignUpState) => dispatch(signUpAction(payload))
+const mapDispatchToProps = (dispatch: any) => ({
+    signUpThunk: (payload: SignUpState) => dispatch(signUpThunk(payload))
 });
 
 export default connect(null, mapDispatchToProps)(Form);
