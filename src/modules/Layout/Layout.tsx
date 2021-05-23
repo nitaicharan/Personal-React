@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import TopNavigation from './components/TopNavigation/TopNavigation';
+import TopNavigation from './TopNavigation/TopNavigation';
 
 export class Layout extends Component {
     render() {

@@ -1,7 +1,7 @@
 import React, { ChangeEvent, Component } from 'react';
 import { connect, MapStateToPropsParam } from 'react-redux';
-import { SettingsState } from '../../../../reducers/SettingsReducer';
-import { State } from '../../../../store';
+import { SettingsState } from '../../../reducers/SettingsReducer';
+import { State } from '../../../store';
 
 interface IProps {
     settings: SettingsState;

@@ -1,7 +1,7 @@
 import React, { ChangeEvent, Component, SyntheticEvent } from 'react';
 import { connect, MapDispatchToPropsFunction } from 'react-redux';
-import { SignInState } from '../../../../reducers/SignInReducer';
-import { signInThunk } from '../../../../thunk/SignInThunks';
+import { SignInState } from '../../../reducers/SignInReducer';
+import { signInThunk } from '../../../thunk/SignInThunks';
 
 type IProps = {
     signInThunk: (payload: SignInState) => void;
