@@ -1,22 +1,24 @@
 import React, { Component } from 'react';
-import Posts from '../Posts/Posts';
-import Banner from './Banner/Banner';
+import PostsPreview from '../PostsPreview/PostsPreview';
+import { Banner } from './Banner/Banner';
 
 class Home extends Component {
-    render() {
-        return (
-            <main className="home-page">
-                <Banner />
+  render() {
+    return (
+      <main className="home-page">
+        <Banner />
 
-                <div className="container page">
-                    <div className="row">
-                        <div className='col-md-9'><Posts /></div>
-                        <div className='col-md-3'>Tags</div>
-                    </div>
-                </div>
-            </main>
-        )
-    }
+        <div className="container page">
+          <div className="row">
+            <div className="col-md-9">
+              <PostsPreview />
+            </div>
+            <div className="col-md-3">Tags</div>
+          </div>
+        </div>
+      </main>
+    );
+  }
 }
 
 export default Home;

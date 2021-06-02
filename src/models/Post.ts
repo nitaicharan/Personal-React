@@ -1,3 +1,5 @@
+import { Author } from "./Author";
+
 export interface Post {
     title: string;
     slug: string;
@@ -10,10 +12,3 @@ export interface Post {
     favoritesCount: number;
     author: Author;
 }
-
-interface Author {
-    username: string;
-    bio: string;
-    image: string;
-    following: boolean;
-};

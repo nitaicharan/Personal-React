@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class Banner extends Component {
+export class Banner extends Component {
     render() {
         return (
             <section className="banner">
@@ -12,5 +12,3 @@ class Banner extends Component {
         )
     }
 }
-
-export default Banner;

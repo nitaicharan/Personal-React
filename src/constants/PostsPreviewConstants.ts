@@ -1,0 +1,5 @@
+export enum PostsPreviewConstants {
+    POSTSPREVIEW = 'HOME',
+    POSTSPREVIEW_SUCCESS = 'HOME SUCCESS',
+    POSTSPREVIEW_FAILURE = 'HOME FAILURE',
+}
