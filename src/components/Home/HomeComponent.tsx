@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
-import PostsPreview from '../PostsPreview/PostsPreview';
-import { Banner } from './Banner/Banner';
+import PostsPreviewComponent from '../PostsPreview/PostsPreviewComponent';
+import { BannerComponent } from './Banner/BannerComponent';
 
-class Home extends Component {
+class HomeComponent extends Component {
   render() {
     return (
       <main className="home-page">
-        <Banner />
+        <BannerComponent />
 
         <div className="container page">
           <div className="row">
             <div className="col-md-9">
-              <PostsPreview />
+              <PostsPreviewComponent />
             </div>
             <div className="col-md-3">Tags</div>
           </div>
@@ -21,4 +21,4 @@ class Home extends Component {
   }
 }
 
-export default Home;
+export default HomeComponent;

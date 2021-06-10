@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
 
-class Title extends Component {
+class TitleComponent extends Component {
     render() {
         return (<h1 className="text-xs-center">Your Settings</h1>)
     }
 }
 
-export default Title
+export default TitleComponent

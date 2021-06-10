@@ -8,7 +8,7 @@ interface Props {
     settings: SettingsState
 }
 
-class Header extends Component<Props> {
+class HeaderComponent extends Component<Props> {
     image(image: string) {
         return image || 'https://static.productionready.io/images/smiley-cyrus.jpg';
     }
@@ -36,4 +36,4 @@ class Header extends Component<Props> {
 const mapStateToProps: MapStateToPropsParam<Props, {}, State> = (store: State) => ({
     settings: store.settings,
 })
-export default connect<Props, {}, {}, State>(mapStateToProps)(Header);
+export default connect<Props, {}, {}, State>(mapStateToProps)(HeaderComponent);

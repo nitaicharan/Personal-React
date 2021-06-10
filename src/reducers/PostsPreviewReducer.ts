@@ -1,5 +1,5 @@
 import { AnyAction, Reducer } from "redux";
-import { PostsPreviewConstants } from "../constants/PostsPreviewConstants";
+import { PostsPreviewConstants, UpdatePost } from "../constants/PostsPreviewConstants";
 import { Post } from "../models/Post";
 
 export interface PostsPreviewState {
@@ -20,8 +20,17 @@ const reducer: Reducer<PostsPreviewState, AnyAction> = (state = initialState, ac
             return { ...state, loading: true };
 
         case PostsPreviewConstants.POSTSPREVIEW_SUCCESS:
-        case PostsPreviewConstants.POSTSPREVIEW_SUCCESS:
             return { ...state, ...action.payload, loading: false };
+
+        case PostsPreviewConstants.POSTSPREVIEW_FAILURE:
+            return { ...state, loading: false };
+
+        case UpdatePost.UPDATE_POST:
+            const articles = state.articles.map(i => {
+                if (action.payload.slug === i.slug) return action.payload as Post;
+                return i;
+            });
+            return { ...state, articles };
         default:
             return state;
     }

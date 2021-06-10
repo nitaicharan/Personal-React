@@ -1,17 +1,17 @@
 import React, { Component } from 'react'
-import Form from './Form/Form'
-import Title from './Title/Title'
+import FormComponent from './Form/FormComponent'
+import TitleComponent from './Title/TitleComponent'
 
-export class SignUp extends Component {
+class SettingsComponent extends Component {
     render() {
         return (
             <>
-                <main className='auth-page'>
+                <main className='settings-page'>
                     <section className='container page'>
                         <div className='row'>
                             <div className='col-md-6 offset-md-3 col-xs-12'>
-                                <Title />
-                                <Form />
+                                <TitleComponent />
+                                <FormComponent />
                             </div>
                         </div>
                     </section>
@@ -21,4 +21,4 @@ export class SignUp extends Component {
     }
 }
 
-export default SignUp
+export default SettingsComponent

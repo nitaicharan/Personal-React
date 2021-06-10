@@ -3,16 +3,16 @@ import { connect, MapDispatchToPropsFunction, MapStateToPropsParam } from 'react
 import { PostsPreviewState } from '../../reducers/PostsPreviewReducer';
 import { State } from '../../state';
 import { fetchPostsThunk } from '../../thunk/PostsPreviewThunks';
-import Preview from './Preview/Preview';
+import PreviewComponent from './Preview/PreviewComponent';
 
 interface IProps {
     fetchPostsThunk: () => void;
 }
 
-class PostsPreview extends Component<IProps & PostsPreviewState> {
+class PostsPreviewComponent extends Component<IProps & PostsPreviewState> {
     componentDidMount = () => this.props.fetchPostsThunk()
 
-    render = () => (this.props.articles.map(i => <Preview key={i.slug} {...i} />));
+    render = () => (this.props.articles.map(i => <PreviewComponent key={i.slug} {...i} />));
 }
 
 const mapStateToProps: MapStateToPropsParam<PostsPreviewState, {}, State> = ({ postsPreview }) => ({ ...postsPreview });
@@ -21,4 +21,4 @@ const mapDispatchToProps: MapDispatchToPropsFunction<IProps, {}> = (dispatch: an
     fetchPostsThunk: () => dispatch(fetchPostsThunk()),
 });
 
-export default connect<PostsPreviewState, IProps, {}, State>(mapStateToProps, mapDispatchToProps)(PostsPreview);
+export default connect<PostsPreviewState, IProps, {}, State>(mapStateToProps, mapDispatchToProps)(PostsPreviewComponent);

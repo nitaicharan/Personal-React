@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-class List extends Component {
+class ListComponent extends Component {
     render() {
         return (
             <section className="container">
@@ -17,4 +17,4 @@ class List extends Component {
     }
 }
 
-export default List
+export default ListComponent

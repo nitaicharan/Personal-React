@@ -1,17 +1,15 @@
 import React, { Component } from 'react'
-import Form from './Form/Form'
-import Title from './Title/Title'
+import FormComponent from './Form/FormComponent'
 
-class Settings extends Component {
+class PostComponent extends Component {
     render() {
         return (
             <>
-                <main className='settings-page'>
+                <main className='editor-page'>
                     <section className='container page'>
                         <div className='row'>
-                            <div className='col-md-6 offset-md-3 col-xs-12'>
-                                <Title />
-                                <Form />
+                            <div className='col-md-10 offset-md-1 col-xs-12'>
+                                <FormComponent />
                             </div>
                         </div>
                     </section>
@@ -21,4 +19,4 @@ class Settings extends Component {
     }
 }
 
-export default Settings
+export default PostComponent

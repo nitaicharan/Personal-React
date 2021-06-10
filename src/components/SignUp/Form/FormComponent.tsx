@@ -6,7 +6,7 @@ import { signUpThunk } from '../../../thunk/SignUpThunks';
 type Props = {
     signUpThunk: (payload: SignUpState) => void;
 }
-class Form extends Component<Props, SignUpState> {
+class FormComponent extends Component<Props, SignUpState> {
 
     handleChange(event: ChangeEvent<HTMLInputElement>) {
         this.setState({
@@ -47,4 +47,4 @@ const mapDispatchToProps = (dispatch: any) => ({
     signUpThunk: (payload: SignUpState) => dispatch(signUpThunk(payload))
 });
 
-export default connect(null, mapDispatchToProps)(Form);
+export default connect(null, mapDispatchToProps)(FormComponent);

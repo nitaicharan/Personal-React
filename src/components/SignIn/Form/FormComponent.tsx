@@ -6,7 +6,7 @@ import { signInThunk } from '../../../thunk/SignInThunks';
 interface IProps {
     signInThunk: (payload: SignInState) => void;
 }
-class Form extends Component<IProps, SignInState> {
+class FormComponent extends Component<IProps, SignInState> {
 
     handleChange = (event: ChangeEvent<HTMLInputElement>) => {
         this.setState({
@@ -41,4 +41,4 @@ const mapDispatchToProps: MapDispatchToPropsFunction<IProps, {}> = (dispatch: an
     signInThunk: (payload: SignInState) => dispatch(signInThunk(payload)),
 });
 
-export default connect<{}, IProps, {}>(null, mapDispatchToProps)(Form);
+export default connect<{}, IProps, {}>(null, mapDispatchToProps)(FormComponent);
