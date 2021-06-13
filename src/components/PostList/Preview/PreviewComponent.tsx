@@ -13,7 +13,7 @@ class PreviewComponent extends Component<IProps & Post> {
 
     render() {
         return (
-            <div className="article-preview">
+            <main className="article-preview">
                 <div className="article-meta">
                     <Link to={`/${this.props.author.username}`}>
                         <img src={this.props.author.image || 'https://static.productionready.io/images/smiley-cyrus.jpg'} alt={this.props.author.username} />
@@ -25,8 +25,6 @@ class PreviewComponent extends Component<IProps & Post> {
                     </div>
                     <div className="pull-xs-right">
                         <button onClick={() => this.props.toggleFavoritePost(this.props)} className={this.toggleFavoriteClass(this.props.favorited)}><i className="ion-heart"></i> {this.props.favoritesCount}</button>
-                        <br />
-                        {this.toggleFavoriteClass(this.props.favorited)}
                     </div>
                 </div>
 
@@ -36,7 +34,7 @@ class PreviewComponent extends Component<IProps & Post> {
                     <span>Read more...</span>
                     <ul className="tag-list">{this.props.tagList.map(tag => <li className="tag-default tag-pill tag-outline" key={tag}>{tag}</li>)}</ul>
                 </Link>
-            </div>
+            </main>
         )
     }
 }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import FormComponent from './Form/FormComponent'
 
-class PostComponent extends Component {
+class PostNewComponent extends Component {
     render() {
         return (
             <>
@@ -19,4 +19,4 @@ class PostComponent extends Component {
     }
 }
 
-export default PostComponent
+export default PostNewComponent

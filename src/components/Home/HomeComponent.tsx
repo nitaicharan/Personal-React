@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import PostsPreviewComponent from '../PostsPreview/PostsPreviewComponent';
+import PostListComponent from '../PostList/PostListComponent';
 import { BannerComponent } from './Banner/BannerComponent';
 
 class HomeComponent extends Component {
@@ -11,7 +11,7 @@ class HomeComponent extends Component {
         <div className="container page">
           <div className="row">
             <div className="col-md-9">
-              <PostsPreviewComponent />
+              <PostListComponent />
             </div>
             <div className="col-md-3">Tags</div>
           </div>

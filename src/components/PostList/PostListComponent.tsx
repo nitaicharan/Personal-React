@@ -9,7 +9,7 @@ interface IProps {
     fetchPostsThunk: () => void;
 }
 
-class PostsPreviewComponent extends Component<IProps & PostsPreviewState> {
+class PostListComponent extends Component<IProps & PostsPreviewState> {
     componentDidMount = () => this.props.fetchPostsThunk()
 
     render = () => (this.props.articles.map(i => <PreviewComponent key={i.slug} {...i} />));
@@ -21,4 +21,4 @@ const mapDispatchToProps: MapDispatchToPropsFunction<IProps, {}> = (dispatch: an
     fetchPostsThunk: () => dispatch(fetchPostsThunk()),
 });
 
-export default connect<PostsPreviewState, IProps, {}, State>(mapStateToProps, mapDispatchToProps)(PostsPreviewComponent);
+export default connect<PostsPreviewState, IProps, {}, State>(mapStateToProps, mapDispatchToProps)(PostListComponent);
