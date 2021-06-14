@@ -34,8 +34,8 @@ export const fetchCommentsThunk = () => {
 }
 
 // TODO get slug from redux route
-// TODO get body from redux postShow-comment-body
-export const commentPostThunk = (body: string) => {
+// TODO get body from redux postShow-comment-article-body
+export const addCommentPostThunk = (body: string) => {
     return (dispatch: any, getState: () => State) => {
         dispatch(commentAction());
         const {
@@ -50,5 +50,15 @@ export const commentPostThunk = (body: string) => {
             .then(() => dispatch(fetchCommentsThunk()))
             // TODO display error message
             .catch(() => dispatch(commentFailureAction()));
+    }
+}
+
+// TODO get slug from redux postShow-comment-article-slug
+// TODO get id from redux postShow-comment-article-comments-id
+export const deleteCommentPostThunk = (slug: string, commentId: string) => {
+    // https://conduit.productionready.io/api/articles/teste-uqsmrw/comments/97808
+
+    return (dispatch: any, getState: () => State) => {
+        dispatch(commentAction());
     }
 }

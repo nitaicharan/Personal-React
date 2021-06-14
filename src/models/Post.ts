@@ -6,9 +6,11 @@ export interface Post {
     body: string;
     createdAt: Date;
     updatedAt: Date;
-    tagList: any[];
+    tagList: tag[];
     description: string;
     favorited: boolean;
     favoritesCount: number;
     author: Author;
 }
+
+export type tag = string;

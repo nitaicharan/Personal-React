@@ -1,14 +1,15 @@
-import React, { ChangeEvent, ChangeEventHandler, Component, SyntheticEvent } from 'react';
+import React, { ChangeEvent, Component, SyntheticEvent } from 'react';
 import { connect, MapDispatchToPropsFunction, MapStateToPropsParam } from 'react-redux';
 import { SettingsState } from '../../../reducers/SettingsReducer';
 import { State } from '../../../state';
-import { commentPostThunk, fetchCommentsThunk } from '../../../thunk/PostShowThunks';
+import { addCommentPostThunk, deleteCommentPostThunk } from '../../../thunk/PostShowThunks';
 
 interface IProps extends SettingsState {
 }
 
 interface IPropsThunk {
-    commentPost: (body: string) => void;
+    addCommentPost: (body: string) => void;
+    deleteCommentPost: (slug: string, commentId: string) => void;
 }
 
 interface IState {
@@ -18,7 +19,7 @@ interface IState {
 export class FormComponent extends Component<IProps & IPropsThunk, IState> {
 
     onClickHandler = (e: SyntheticEvent) => {
-        this.props.commentPost(this.state.body);
+        this.props.addCommentPost(this.state.body);
         e.preventDefault();
     }
 
@@ -53,7 +54,8 @@ export class FormComponent extends Component<IProps & IPropsThunk, IState> {
 
 const mapStateToProps: MapStateToPropsParam<IProps, {}, State> = ({ settings }) => ({ ...settings, });
 const mapDispatchToProps: MapDispatchToPropsFunction<IPropsThunk, {}> = (dispatch: any) => ({
-    commentPost: (body: string) => dispatch(commentPostThunk(body)),
+    addCommentPost: (body: string) => dispatch(addCommentPostThunk(body)),
+    deleteCommentPost: (slug: string, commentId: string) => dispatch(deleteCommentPostThunk(slug, commentId)),
 });
 
 export default connect<IProps, IPropsThunk, {}, State>(mapStateToProps, mapDispatchToProps)(FormComponent);
