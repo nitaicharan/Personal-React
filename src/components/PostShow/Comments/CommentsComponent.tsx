@@ -6,15 +6,13 @@ import CommentComponent from './Comment/CommentComponent';
 
 interface IProps {
     comments: Comment[];
-    slug: string;
-    authorUsername: string;
 }
 
 class CommentsComponent extends Component<IProps> {
     render() {
         return (
             <>
-                {this.props.comments?.map(i => <CommentComponent {...i} slug={this.props.slug} authorUsername={this.props.authorUsername} key={i.id} />)}
+                {this.props.comments?.map(i => <CommentComponent {...i} key={i.id} />)}
             </>
         );
     }

@@ -1,19 +1,23 @@
 import React, { Component } from 'react';
-import { connect, MapDispatchToPropsNonObject } from 'react-redux';
+import { connect, MapDispatchToPropsParam, MapStateToPropsParam } from 'react-redux'
 import { Link } from 'react-router-dom';
 import { Comment } from '../../../../models/Comment';
+import { State } from '../../../../state';
 import { deleteCommentPostThunk } from '../../../../thunk/PostShowThunks';
 
 interface IProps extends Comment {
-    slug: string;
-    authorUsername: string;
 }
 
-interface IPropsThunk {
+interface TStateProps {
+    authName: string;
+    slug: string;
+}
+
+interface TDispatchProps {
     deleteCommentPost: (slug: string, commentId: number) => void;
 }
 
-class CommentComponent extends Component<IProps & IPropsThunk> {
+class CommentComponent extends Component<IProps & TDispatchProps & TStateProps> {
     deleteComment = () => this.props.deleteCommentPost(this.props.slug, this.props.id);
 
     render() {
@@ -32,7 +36,7 @@ class CommentComponent extends Component<IProps & IPropsThunk> {
                     <span className="date-posted">{this.props.createdAt}</span>
 
                     {
-                        this.props.authorUsername === this.props.author.username &&
+                        this.props.authName === this.props.author.username &&
                         <span onClick={this.deleteComment} className="mod-options"><i className="ion-trash-a"></i></span>
                     }
                 </div>
@@ -41,7 +45,12 @@ class CommentComponent extends Component<IProps & IPropsThunk> {
     }
 }
 
-const mapDispatchToProps: MapDispatchToPropsNonObject<IPropsThunk, {}> = (dispatch: any) => ({
+const mapStateToProps: MapStateToPropsParam<TStateProps, {}, State> = ({
+    settings: { username: authName },
+    postShow: { article: { slug } }
+}) => ({ authName, slug });
+
+const mapDispatchToProps: MapDispatchToPropsParam<TDispatchProps, {}> = (dispatch: any) => ({
     deleteCommentPost: (slug: string, commentId: number) => dispatch(deleteCommentPostThunk(slug, commentId)),
 });
-export default connect<{}, IPropsThunk, {}>(null, mapDispatchToProps)(CommentComponent);
+export default connect<TStateProps, TDispatchProps, {}, State>(mapStateToProps, mapDispatchToProps)(CommentComponent);
