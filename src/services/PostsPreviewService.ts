@@ -6,5 +6,3 @@ export interface Filter {
 }
 
 export const fetchPosts = () => api.get(`articles`);
-
-const buildParams = (filter: Filter) => Object.keys(filter).reduce((obj, key, index) => `${key}=${Object.keys(filter)[index]}`, '?');

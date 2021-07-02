@@ -19,7 +19,7 @@ class BannerComponent extends Component<IProps> {
                         {
                             this.props.author?.image &&
                             <Link to={`/${this.props.author?.username}`}>
-                                <img src={this.props.author?.image || this.noneImage} />
+                                <img src={this.props.author?.image || this.noneImage} alt="" />
                             </Link>
                         }
                         <div className="info">

@@ -1,4 +1,4 @@
-import { CommentConstants } from './../constants/PostShowConstants';
+import { CommentConstants, DeleteCommentConstants } from './../constants/PostShowConstants';
 import { AnyAction } from "redux";
 import { FetchCommentsConstants, PostShowConstants } from "../constants/PostShowConstants";
 import { PostShowState } from "../reducers/PostShowReducer";
@@ -39,4 +39,16 @@ export const commentSuccessAction = (): AnyAction => ({
 
 export const commentFailureAction = (): AnyAction => ({
     type: CommentConstants.COMMENT_FAILURE,
+});
+
+export const deleteCommentAction = (): AnyAction => ({
+    type: DeleteCommentConstants.DELETE_COMMENT,
+});
+
+export const deleteCommentSuccessAction = (): AnyAction => ({
+    type: DeleteCommentConstants.DELETE_COMMENT_SUCCESS,
+});
+
+export const deleteCommentFailureAction = (): AnyAction => ({
+    type: DeleteCommentConstants.DELETE_COMMENT_FAILURE,
 });

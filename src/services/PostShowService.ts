@@ -14,3 +14,7 @@ export const fetchComments = (slug: string) => api.get<{ comments: any }>(`artic
 export const commentPost = (comment: Comment) => api.post<{ article: Post }>(`articles/${comment.slug}/comments`, { comment: { body: comment.body } }, {
     headers: { Authorization: `Token ${comment.token}`, }
 });
+
+export const deleteCommentPost = (params: { slug: string, commentId: number, token: string }) => api.delete(`articles/${params.slug}/comments/${params.commentId}`, {
+    headers: { Authorization: `Token ${params.token}`, }
+});

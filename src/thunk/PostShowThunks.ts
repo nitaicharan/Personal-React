@@ -1,8 +1,8 @@
-import { commentAction, fetchCommentsAction, fetchCommentsSuccessAction, postShowAction, postShowFailureAction, postShowSuccessAction } from "../actions/PostShowActions";
+import { commentAction, deleteCommentAction, deleteCommentFailureAction, deleteCommentSuccessAction, fetchCommentsAction, fetchCommentsSuccessAction, postShowAction, postShowFailureAction, postShowSuccessAction } from "../actions/PostShowActions";
 import { PostShowState } from "../reducers/PostShowReducer";
 import { State } from "../state";
 import { commentFailureAction, commentSuccessAction, fetchCommentsFailureAction } from './../actions/PostShowActions';
-import { commentPost, fetchComments, fetchPost } from './../services/PostShowService';
+import { commentPost, deleteCommentPost, fetchComments, fetchPost } from './../services/PostShowService';
 
 // TODO get slug from redux route
 export const fetchPostThunk = (slug: string) => {
@@ -55,10 +55,16 @@ export const addCommentPostThunk = (body: string) => {
 
 // TODO get slug from redux postShow-comment-article-slug
 // TODO get id from redux postShow-comment-article-comments-id
-export const deleteCommentPostThunk = (slug: string, commentId: string) => {
+export const deleteCommentPostThunk = (slug: string, commentId: number) => {
     // https://conduit.productionready.io/api/articles/teste-uqsmrw/comments/97808
 
     return (dispatch: any, getState: () => State) => {
-        dispatch(commentAction());
+        dispatch(deleteCommentAction());
+        const { settings: { token }, } = getState();
+
+        deleteCommentPost({ slug, commentId, token })
+            .then(() => dispatch(deleteCommentSuccessAction()))
+            .then(() => dispatch(fetchCommentsThunk()))
+            .catch(() => dispatch(deleteCommentFailureAction()));
     }
 }

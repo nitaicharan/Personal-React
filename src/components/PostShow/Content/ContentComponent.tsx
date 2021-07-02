@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { connect, MapStateToPropsParam } from "react-redux";
-import { Post } from "../../../models/Post";
 import { PostShowState } from "../../../reducers/PostShowReducer";
-import { SettingsState } from "../../../reducers/SettingsReducer";
 import { State } from "../../../state";
 import CommentsComponent from "../Comments/CommentsComponent";
 import FormComponent from "../Form/FormComponent";

@@ -9,7 +9,7 @@ interface IProps extends SettingsState {
 
 interface IPropsThunk {
     addCommentPost: (body: string) => void;
-    deleteCommentPost: (slug: string, commentId: string) => void;
+    deleteCommentPost: (slug: string, commentId: number) => void;
 }
 
 interface IState {
@@ -41,7 +41,7 @@ export class FormComponent extends Component<IProps & IPropsThunk, IState> {
                             <textarea name="body" onChange={this.handleChange} className="form-control" placeholder="Write a comment..." rows={3}></textarea>
                         </div>
                         <div className="card-footer">
-                            <img src={this.props.image} className="comment-author-img" />
+                            <img src={this.props.image} className="comment-author-img" alt="" />
                             {/* TODO add functionality to this button */}
                             <button onClick={this.onClickHandler} className="btn btn-sm btn-primary" type="submit">Post Comment</button>
                         </div>
@@ -55,7 +55,7 @@ export class FormComponent extends Component<IProps & IPropsThunk, IState> {
 const mapStateToProps: MapStateToPropsParam<IProps, {}, State> = ({ settings }) => ({ ...settings, });
 const mapDispatchToProps: MapDispatchToPropsFunction<IPropsThunk, {}> = (dispatch: any) => ({
     addCommentPost: (body: string) => dispatch(addCommentPostThunk(body)),
-    deleteCommentPost: (slug: string, commentId: string) => dispatch(deleteCommentPostThunk(slug, commentId)),
+    deleteCommentPost: (slug: string, commentId: number) => dispatch(deleteCommentPostThunk(slug, commentId)),
 });
 
 export default connect<IProps, IPropsThunk, {}, State>(mapStateToProps, mapDispatchToProps)(FormComponent);
