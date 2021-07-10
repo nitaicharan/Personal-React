@@ -18,7 +18,7 @@ class ListComponent extends Component<IProps & RouteComponentProps> {
     componentDidMount() {
         // TODO dispatch filter to the store
         // TODO get filter in the store
-        this.props.fetchPosts({ author: this.props.match.params.username });
+        this.fetchPost({ author: this.props.match.params.username })
     }
 
     fetchPost(filter?: Filter) {
@@ -53,5 +53,4 @@ class ListComponent extends Component<IProps & RouteComponentProps> {
 const mapDispatchToProps: MapDispatchToPropsFunction<TDispatchProps, {}> = (dispatch: any) => ({
     fetchPosts: (params?: Filter) => dispatch(fetchPostsThunk(params)),
 });
-
 export default withRouter(connect<{}, TDispatchProps, {}, State>(null, mapDispatchToProps)(ListComponent));

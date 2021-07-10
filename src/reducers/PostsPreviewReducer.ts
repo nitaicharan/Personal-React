@@ -1,3 +1,4 @@
+import { FetchFeedsConstants } from './../constants/PostsPreviewConstants';
 import { AnyAction, Reducer } from "redux";
 import { PostsPreviewConstants, UpdatePost } from "../constants/PostsPreviewConstants";
 import { Post } from "../models/Post";
@@ -16,13 +17,16 @@ const initialState: PostsPreviewState = {
 
 const reducer: Reducer<PostsPreviewState, AnyAction> = (state = initialState, action: AnyAction): PostsPreviewState => {
     switch (action.type) {
-        case PostsPreviewConstants.POSTSPREVIEW:
+        case FetchFeedsConstants.FETCH_FEEDS:
+        case PostsPreviewConstants.POSTS_PREVIEW:
             return { ...state, articles: [], articlesCount: 0, loading: true };
 
-        case PostsPreviewConstants.POSTSPREVIEW_SUCCESS:
+        case FetchFeedsConstants.FETCH_FEEDS_SUCCESS:
+        case PostsPreviewConstants.POSTS_PREVIEW_SUCCESS:
             return { ...state, ...action.payload, loading: false };
 
-        case PostsPreviewConstants.POSTSPREVIEW_FAILURE:
+        case FetchFeedsConstants.FETCH_FEEDS_FAILURE:
+        case PostsPreviewConstants.POSTS_PREVIEW_FAILURE:
             return { ...state, loading: false };
 
         case UpdatePost.UPDATE_POST:
