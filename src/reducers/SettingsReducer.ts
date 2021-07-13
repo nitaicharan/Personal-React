@@ -14,7 +14,10 @@ export type SettingsState = {
     password: string;
 }
 
-const reducer: Reducer<SettingsState, AnyAction> = (state = {} as SettingsState, action: AnyAction): SettingsState => {
+// TODO fetch previously values saved in local store as initial state
+const initialState: SettingsState = {} as SettingsState;
+
+const reducer: Reducer<SettingsState, AnyAction> = (state = initialState, action: AnyAction): SettingsState => {
     switch (action.type) {
         case SettingsConstants.SETTINGS:
             return { ...state, ...action.payload, loading: true };
