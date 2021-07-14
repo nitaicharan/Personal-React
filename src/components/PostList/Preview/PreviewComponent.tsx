@@ -15,12 +15,12 @@ class PreviewComponent extends Component<IProps & Post> {
         return (
             <main className="article-preview">
                 <div className="article-meta">
-                    <Link to={`/${this.props.author.username}`}>
+                    <Link to={`/profiles/${this.props.author.username}`}>
                         <img src={this.props.author.image || 'https://static.productionready.io/images/smiley-cyrus.jpg'} alt={this.props.author.username} />
                     </Link>
 
                     <div className="info">
-                        <Link className="author" to={`/${this.props.author.username}`}>{this.props.author.username}</Link>
+                        <Link className="author" to={`/profiles/${this.props.author.username}`}>{this.props.author.username}</Link>
                         <span className="date">{new Date(this.props.createdAt).toDateString()}</span>
                     </div>
                     <div className="pull-xs-right">

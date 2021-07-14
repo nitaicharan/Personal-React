@@ -1,27 +1,36 @@
 import React, { Component } from 'react';
-import { connect, MapStateToPropsParam } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { connect, MapDispatchToPropsParam, MapStateToPropsParam } from 'react-redux';
+import { Link, RouteComponentProps, withRouter } from 'react-router-dom';
+import { ProfileState } from '../../../reducers/ProfileReducer';
 import { State } from '../../../state';
+import { fetchProfileThunk } from '../../../thunk/ProfileThunks';
 
-interface IProps {
-    username: string;
-    bio: string;
-    image: string;
+interface IStateProps extends ProfileState {
+}
+
+interface IDispatchProps {
+    fetchProfile: (username: string) => void;
+}
+
+interface IProps extends RouteComponentProps<{ username: string }>, IStateProps, IDispatchProps {
 }
 
 class Banner extends Component<IProps> {
-    render() {
-        const { username, bio, image } = this.props;
 
+    componentDidMount() {
+        this.props.fetchProfile(this.props.match.params.username);
+    }
+
+    render() {
         return (
             <section className="user-info">
                 <div className="container">
 
                     <div className="row">
                         <div className="col-xs-12 col-md-10 offset-md-1">
-                            <img src={image || 'https://static.productionready.io/images/smiley-cyrus.jpg'} className="user-img" alt="profile" />
-                            <h4>{username}</h4>
-                            <p>{bio}</p>
+                            <img src={this.props.image || 'https://static.productionready.io/images/smiley-cyrus.jpg'} className="user-img" alt="profile" />
+                            <h4>{this.props.username}</h4>
+                            <p>{this.props.bio}</p>
 
                             <Link to="/settings" className="btn btn-sm btn-outline-secondary action-btn ion-gear-a">&nbsp;Settings</Link>
                         </div>
@@ -31,8 +40,8 @@ class Banner extends Component<IProps> {
         )
     }
 }
-
-
-const mapStateToProps: MapStateToPropsParam<IProps, {}, State> = ({ settings }) => ({ ...settings })
-
-export default connect<IProps, {}, {}, State>(mapStateToProps)(Banner);
+const mapStateToProps: MapStateToPropsParam<IStateProps, {}, State> = ({ profile }) => ({ ...profile });
+const mapDispatchToProps: MapDispatchToPropsParam<IDispatchProps, {}> = (dispatch: any) => ({
+    fetchProfile: (username: string) => dispatch(fetchProfileThunk(username)),
+});
+export default withRouter(connect<IStateProps, IDispatchProps, {}, State>(mapStateToProps, mapDispatchToProps)(Banner));

@@ -1,0 +1,5 @@
+export enum ProfileConstants {
+    PROFILE = 'PROFILE',
+    PROFILE_SUCCESS = 'PROFILE SUCCESS',
+    PROFILE_FAILURE = 'PROFILE FAILURE',
+}

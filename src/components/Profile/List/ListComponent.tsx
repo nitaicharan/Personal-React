@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { connect, MapDispatchToPropsFunction, MapStateToPropsParam } from 'react-redux';
+import { connect, MapDispatchToPropsFunction } from 'react-redux';
 import { NavLink, RouteComponentProps, withRouter } from 'react-router-dom';
 import { Filter } from '../../../services/PostsPreviewService';
 import { State } from '../../../state';
@@ -18,15 +18,13 @@ class ListComponent extends Component<IProps & RouteComponentProps> {
     componentDidMount() {
         // TODO dispatch filter to the store
         // TODO get filter in the store
-        const { match, fetchPosts } = this.props;
-        fetchPosts({ author: match.params.username });
+        this.props.fetchPosts({ author: this.props.match.params.username });
     }
 
     fetchPost(filter?: Filter) {
         // TODO dispatch filter to the store
         // TODO get filter in the store
-        const { match, fetchPosts } = this.props;
-        fetchPosts(filter);
+        this.props.fetchPosts(filter);
     }
 
     render() {
