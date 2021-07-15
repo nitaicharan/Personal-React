@@ -1,5 +1,6 @@
 import { AnyAction, Reducer } from "redux";
 import { SettingsConstants } from "../constants/SettingsConstants";
+import { getSetting } from "../services/LocalStoreService";
 
 export type SettingsState = {
     bio: string;
@@ -15,7 +16,7 @@ export type SettingsState = {
 }
 
 // TODO fetch previously values saved in local store as initial state
-const initialState: SettingsState = {} as SettingsState;
+const initialState: SettingsState = getSetting() || {} as SettingsState;
 
 const reducer: Reducer<SettingsState, AnyAction> = (state = initialState, action: AnyAction): SettingsState => {
     switch (action.type) {
