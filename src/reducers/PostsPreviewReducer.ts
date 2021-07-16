@@ -17,7 +17,7 @@ const initialState: PostsPreviewState = {
 const reducer: Reducer<PostsPreviewState, AnyAction> = (state = initialState, action: AnyAction): PostsPreviewState => {
     switch (action.type) {
         case PostsPreviewConstants.POSTSPREVIEW:
-            return { ...state, loading: true };
+            return { ...state, articles: [], articlesCount: 0, loading: true };
 
         case PostsPreviewConstants.POSTSPREVIEW_SUCCESS:
             return { ...state, ...action.payload, loading: false };

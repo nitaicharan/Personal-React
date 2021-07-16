@@ -1,12 +1,13 @@
 import { AnyAction, Dispatch } from "redux";
-import { fetchPosts } from '../services/PostsPreviewService';
+import { fetchPosts, Filter } from '../services/PostsPreviewService';
 import { postsPreviewAction, postsPreviewFailureAction, postsPreviewSuccessAction } from '../actions/PostsPreviewActions';
 
-export const fetchPostsThunk = () => {
+// TODO get filter in the store
+export const fetchPostsThunk = (params?: Filter) => {
     return (dispatch: Dispatch<AnyAction>) => {
         dispatch(postsPreviewAction());
 
-        fetchPosts()
+        fetchPosts(params)
             .then(({ data }) => dispatch(postsPreviewSuccessAction({ ...data })))
             .catch(e => dispatch(postsPreviewFailureAction()));
     };

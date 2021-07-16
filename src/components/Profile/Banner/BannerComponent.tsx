@@ -16,6 +16,7 @@ class Banner extends Component<IProps> {
         return (
             <section className="user-info">
                 <div className="container">
+
                     <div className="row">
                         <div className="col-xs-12 col-md-10 offset-md-1">
                             <img src={image || 'https://static.productionready.io/images/smiley-cyrus.jpg'} className="user-img" alt="profile" />
