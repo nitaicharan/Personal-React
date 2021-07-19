@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { BannerComponent } from '../Home/Banner/BannerComponent'
+import BannerComponent from './Banner/BannerComponent'
 import ListComponent from './List/ListComponent'
 
 class ProfileComponent extends Component {

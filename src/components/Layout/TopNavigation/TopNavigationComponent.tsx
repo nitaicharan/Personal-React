@@ -17,7 +17,7 @@ export class TopNavigationComponent extends Component {
                     <Route path="/signin" component={SignInComponent} />
                     <Route path="/signup" component={SignUpComponent} />
                     <Route path="/settings" component={SettingsComponent} />
-                    <Route path="/profile" component={ProfileComponent} />
+                    <Route path="/profiles/:username" component={ProfileComponent} />
                     <Route path="/new" component={PostNewComponent} />
                     <Route path="/article/:slug" component={PostShowComponent} />
                     <Route path="/" component={HomeComponent} />
