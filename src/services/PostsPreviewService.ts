@@ -2,6 +2,7 @@ import { api } from "./axiosConfig";
 
 export interface Filter {
     author?: string;
+    favorited?: string;
     limit?: number;
     offse?: number;
 }

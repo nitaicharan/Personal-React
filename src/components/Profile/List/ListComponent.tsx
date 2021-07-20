@@ -6,23 +6,27 @@ import { State } from '../../../state';
 import { fetchPostsThunk } from '../../../thunk/PostsPreviewThunks';
 import PostListComponent from '../../PostList/PostListComponent';
 
-interface TStateProps {
-    username: string
-}
-
 interface TDispatchProps {
-    fetchPosts: (params: Filter) => void;
+    fetchPosts: (params?: Filter) => void;
 }
 
-interface IProps extends TStateProps, TDispatchProps, RouteComponentProps<{ username: string }> {
+interface IProps extends TDispatchProps, RouteComponentProps<{ username: string }> {
 }
 
 class ListComponent extends Component<IProps & RouteComponentProps> {
 
     componentDidMount() {
+        // TODO dispatch filter to the store
         // TODO get filter in the store
         const { match, fetchPosts } = this.props;
         fetchPosts({ author: match.params.username });
+    }
+
+    fetchPost(filter?: Filter) {
+        // TODO dispatch filter to the store
+        // TODO get filter in the store
+        const { match, fetchPosts } = this.props;
+        fetchPosts(filter);
     }
 
     render() {
@@ -33,10 +37,10 @@ class ListComponent extends Component<IProps & RouteComponentProps> {
                         <div className="articles-toggle">
                             <ul className="nav nav-pills outline-active">
                                 <li className="nav-item">
-                                    <NavLink exact to={`${this.props.match.url}`} className="nav-link">Articles</NavLink>
+                                    <NavLink exact onClick={() => this.fetchPost({ author: this.props.match.params.username })} to={`${this.props.match.url}`} className="nav-link">Articles</NavLink>
                                 </li>
                                 <li className="nav-item">
-                                    <NavLink to={`${this.props.match.url}/favorites`} className="nav-link">Favorited Articles</NavLink>
+                                    <NavLink onClick={() => this.fetchPost({ favorited: this.props.match.params.username })} to={`${this.props.match.url}/favorites`} className="nav-link">Favorited Articles</NavLink>
                                 </li>
                             </ul>
                         </div>
@@ -48,10 +52,8 @@ class ListComponent extends Component<IProps & RouteComponentProps> {
     }
 }
 
-const mapStateToProps: MapStateToPropsParam<TStateProps, {}, State> = ({ settings }) => ({ username: settings.username })
-
 const mapDispatchToProps: MapDispatchToPropsFunction<TDispatchProps, {}> = (dispatch: any) => ({
-    fetchPosts: (params: Filter) => dispatch(fetchPostsThunk(params)),
+    fetchPosts: (params?: Filter) => dispatch(fetchPostsThunk(params)),
 });
 
-export default withRouter(connect<TStateProps, TDispatchProps, {}, State>(mapStateToProps, mapDispatchToProps)(ListComponent));
+export default withRouter(connect<{}, TDispatchProps, {}, State>(null, mapDispatchToProps)(ListComponent));
