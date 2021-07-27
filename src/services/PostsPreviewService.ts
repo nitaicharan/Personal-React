@@ -7,7 +7,11 @@ export interface Filter {
     offset?: number;
 }
 
-export const fetchPosts = (params?: Filter) => api.get(`articles`, { params });
+export const fetchPosts = (token: string, params?: Filter) => api.get(`articles`, {
+    params,
+    headers: { Authorization: `Token ${token}` }
+});
+
 export const fetchFeeds = (token: string, params?: Filter) => api.get(`articles/feed`, {
     params,
     headers: { Authorization: `Token ${token}` }

@@ -7,10 +7,11 @@ import { postsPreviewAction, postsPreviewFailureAction, postsPreviewSuccessActio
 
 // TODO get filter in the store
 export const fetchPostsThunk = (params?: Filter) => {
-    return (dispatch: Dispatch<AnyAction>) => {
+    return (dispatch: Dispatch<AnyAction>, getState: () => State) => {
         dispatch(postsPreviewAction());
 
-        fetchPosts(params)
+        const { settings: { token } } = getState();
+        fetchPosts(token, params)
             .then(({ data }) => dispatch(postsPreviewSuccessAction({ ...data })))
             .catch(e => dispatch(postsPreviewFailureAction()));
     };
