@@ -13,12 +13,18 @@ interface TDispatchProps {
 interface IProps extends TDispatchProps, RouteComponentProps<{ username: string }> {
 }
 
-class ListComponent extends Component<IProps & RouteComponentProps> {
+class ListComponent extends Component<IProps> {
 
     componentDidMount() {
         // TODO dispatch filter to the store
         // TODO get filter in the store
         this.fetchPost({ author: this.props.match.params.username })
+    }
+
+    componentDidUpdate(prevProps: IProps) {
+        // TODO dispatch filter to the store
+        // TODO get filter in the store
+        this.fetchPost({ author: this.props.match.params.username });
     }
 
     fetchPost(filter?: Filter) {

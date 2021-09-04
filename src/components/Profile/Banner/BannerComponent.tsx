@@ -20,8 +20,23 @@ interface IProps extends RouteComponentProps<{ username: string }>, IStateProps,
 class Banner extends Component<IProps> {
 
     componentDidMount() {
+        // TODO dispatch filter to the store
+        // TODO get filter in the store
+        this.fetchPost(this.props.match.params.username)
+    }
+
+    componentDidUpdate(prevProps: IProps, next: {}) {
+        // TODO dispatch filter to the store
+        // TODO get filter in the store
+        prevProps.match.params.username !== this.props.match.params.username && this.fetchPost(this.props.match.params.username)
+    }
+
+    fetchPost(username?: string) {
+        // TODO dispatch filter to the store
+        // TODO get filter in the store
         this.props.fetchProfile(this.props.match.params.username);
     }
+
 
     render() {
         const usernameSetting = this.props.settings.username;

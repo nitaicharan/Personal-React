@@ -9,7 +9,7 @@ export interface Filter {
 
 export const fetchPosts = (token: string, params?: Filter) => api.get(`articles`, {
     params,
-    headers: { Authorization: `Token ${token}` }
+    headers: { Authorization: token ? `Token ${token}` : '' }
 });
 
 export const fetchFeeds = (token: string, params?: Filter) => api.get(`articles/feed`, {
