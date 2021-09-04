@@ -26,6 +26,11 @@ const reducer: Reducer<SettingsState, AnyAction> = (state = initialState, action
         case SettingsConstants.SETTINGS_SUCCESS:
         case SettingsConstants.SETTINGS_FAILURE:
             return { ...state, loading: false };
+
+        case SettingsConstants.LOGOUT:
+        case SettingsConstants.LOGOUT_SUCCESS:
+        case SettingsConstants.LOGOUT_FAILURE:
+            return {} as SettingsState;
         default:
             return state;
     }

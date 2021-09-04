@@ -1,13 +1,20 @@
 import React, { ChangeEvent, Component } from 'react';
-import { connect, MapStateToPropsParam } from 'react-redux';
+import { connect, MapDispatchToPropsFunction, MapStateToPropsParam } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 import { SettingsState } from '../../../reducers/SettingsReducer';
 import { State } from '../../../state';
+import { logoutThunk } from '../../../thunk/SettingsThunks';
 
-interface IProps {
+interface IDispatchProps {
+    logout: () => void;
+}
+
+interface TStateProps {
     settings: SettingsState;
 }
 
-class Form extends Component<IProps, SettingsState> {
+class Form extends Component<TStateProps & IDispatchProps, SettingsState> {
+
     handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         this.setState({
             ...this.state,
@@ -41,13 +48,19 @@ class Form extends Component<IProps, SettingsState> {
                         <input onChange={this.handleChange} defaultValue={settings.password} className='form-control form-control-lg' type='password' autoComplete='current-password' placeholder='New Password' />
                     </fieldset>
 
-                    <button className='btn btn-lg btn-primary pull-xs-right' type='submit'>Update Settings</button>
+
+                    <NavLink onClick={this.props.logout} to="/" className="btn btn-outline-danger">Logout</NavLink>
+                    <button className='btn btn-primary pull-xs-right' type='submit'>Save</button>
                 </fieldset>
-            </form>
+            </form >
         )
     }
 }
 
-const mapStateToProps: MapStateToPropsParam<IProps, {}, State> = ({ settings }) => ({ settings });
+const mapStateToProps: MapStateToPropsParam<TStateProps, {}, State> = ({ settings }) => ({ settings });
 
-export default connect<IProps, {}, {}, State>(mapStateToProps)(Form);
+const mapDispatchToProps: MapDispatchToPropsFunction<IDispatchProps, {}> = (dispatch: any) => ({
+    logout: () => dispatch(logoutThunk())
+});
+
+export default connect<TStateProps, IDispatchProps, {}, State>(mapStateToProps, mapDispatchToProps)(Form);

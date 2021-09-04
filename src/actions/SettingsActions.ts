@@ -14,3 +14,15 @@ export const settingsSuccessAction = (): AnyAction => ({
 export const settingsFailureAction = (): AnyAction => ({
     type: SettingsConstants.SETTINGS_FAILURE,
 });
+
+export const logoutAction = (): AnyAction => ({
+    type: SettingsConstants.LOGOUT,
+});
+
+export const logoutSuccessAction = (): AnyAction => ({
+    type: SettingsConstants.LOGOUT_SUCCESS,
+});
+
+export const logoutFailureAction = (): AnyAction => ({
+    type: SettingsConstants.LOGOUT_FAILURE,
+});
