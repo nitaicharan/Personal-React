@@ -7,4 +7,8 @@ export enum SettingsConstants {
     LOGOUT = 'LOGOUT',
     LOGOUT_SUCCESS = 'LOGOUT SUCCESS',
     LOGOUT_FAILURE = 'LOGOUT FAILURE',
+
+    SAVE = 'SAVE',
+    SAVE_SUCCESS = 'SAVE SUCCESS',
+    SAVE_FAILURE = 'SAVE FAILURE',
 }

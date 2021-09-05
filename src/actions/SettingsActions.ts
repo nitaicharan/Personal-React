@@ -26,3 +26,16 @@ export const logoutSuccessAction = (): AnyAction => ({
 export const logoutFailureAction = (): AnyAction => ({
     type: SettingsConstants.LOGOUT_FAILURE,
 });
+
+export const saveAction = (): AnyAction => ({
+    type: SettingsConstants.SAVE,
+});
+
+export const saveSuccessAction = (payload: SettingsState): AnyAction => ({
+    type: SettingsConstants.SAVE_SUCCESS,
+    payload,
+});
+
+export const saveFailureAction = (): AnyAction => ({
+    type: SettingsConstants.SAVE_FAILURE,
+});
