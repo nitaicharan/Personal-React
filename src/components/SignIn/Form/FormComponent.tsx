@@ -1,5 +1,6 @@
 import React, { ChangeEvent, Component, SyntheticEvent } from 'react';
 import { connect, MapDispatchToPropsFunction } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { SignInState } from '../../../reducers/SignInReducer';
 import { signInThunk } from '../../../thunk/SignInThunks';
 
@@ -17,7 +18,6 @@ class FormComponent extends Component<IProps, SignInState> {
 
     handleSubmit = (event: SyntheticEvent) => {
         this.props.signInThunk(this.state);
-        event.preventDefault();
     };
 
     render() {
@@ -32,7 +32,7 @@ class FormComponent extends Component<IProps, SignInState> {
                     <input onChange={this.handleChange} name="password" className='form-control form-control-lg' type='password' placeholder='Password' />
                 </fieldset>
 
-                <button className='btn btn-lg btn-primary pull-xs-right' type="submit">Sign in</button>
+                <Link onClick={this.handleSubmit} to="/" className='btn btn-lg btn-primary pull-xs-right'>Sign in</Link>
             </form >
         )
     };

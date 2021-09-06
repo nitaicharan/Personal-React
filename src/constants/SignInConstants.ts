@@ -1,5 +1,5 @@
 export enum SignInConstants {
-    SIGN_IN = 'SIGN_IN',
-    SIGN_IN_SUCCESS = 'SIGN_IN SUCCESS',
-    SIGN_IN_FAILURE = 'SIGN_IN FAILURE',
+    SIGN_IN = 'SIGN IN',
+    SIGN_IN_SUCCESS = 'SIGN IN SUCCESS',
+    SIGN_IN_FAILURE = 'SIGN IN FAILURE',
 }
