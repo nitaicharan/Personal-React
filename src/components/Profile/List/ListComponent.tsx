@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { connect, MapDispatchToPropsFunction } from 'react-redux';
 import { NavLink, RouteComponentProps, withRouter } from 'react-router-dom';
-import { Filter } from '../../../services/PostsPreviewService';
+import { PostsPreviewState } from '../../../reducers/PostsPreviewReducer';
 import { State } from '../../../state';
 import { fetchPostsThunk } from '../../../thunk/PostsPreviewThunks';
 import PostListComponent from '../../PostList/PostListComponent';
 
 interface TDispatchProps {
-    fetchPosts: (params?: Filter) => void;
+    fetchPosts: (params?: PostsPreviewState) => void;
 }
 
 interface IProps extends TDispatchProps, RouteComponentProps<{ username: string }> {
@@ -27,7 +27,7 @@ class ListComponent extends Component<IProps> {
         this.fetchPost({ author: this.props.match.params.username });
     }
 
-    fetchPost(filter?: Filter) {
+    fetchPost(filter?: PostsPreviewState) {
         // TODO dispatch filter to the store
         // TODO get filter in the store
         this.props.fetchPosts(filter);
@@ -57,6 +57,6 @@ class ListComponent extends Component<IProps> {
 }
 
 const mapDispatchToProps: MapDispatchToPropsFunction<TDispatchProps, {}> = (dispatch: any) => ({
-    fetchPosts: (params?: Filter) => dispatch(fetchPostsThunk(params)),
+    fetchPosts: (params?: PostsPreviewState) => dispatch(fetchPostsThunk(params)),
 });
 export default withRouter(connect<{}, TDispatchProps, {}, State>(null, mapDispatchToProps)(ListComponent));
