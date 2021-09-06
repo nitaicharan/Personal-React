@@ -18,7 +18,7 @@ interface IDispatchProps {
 class PaginationComponent extends Component<IProps & IStateProps & IDispatchProps> {
     render() {
         return (
-            <li className={`page-item ${this.props.pageIndex === this.props.index}`}>
+            <li className={`page-item ${this.props.pageIndex === this.props.index && 'active'}`}>
                 <a onClick={e => this.props.goToPage(this.props.index)} className="pagination-item"><span className="page-link">{this.props.index}</span></a>
             </li>
         );
